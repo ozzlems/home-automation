@@ -1,0 +1,12 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;  
+  }
+  
+  body{
+      font-family: 'Ubuntu', sans-serif;
+      background-color: rgb(155, 21, 21);
+      margin: 0;
+      padding: 0;
+  }
