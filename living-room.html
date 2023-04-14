@@ -16,6 +16,53 @@
     <title>Living Room </title>
 </head>
 <body>
-    
+  <header>
+    <h1> Living Room </h1>
+   </header>
+   
+   <h2 class = "general">General Sensors</h2>
+
+   <div class="container">
+    <div class="box">
+      <i class="fas fa-thermometer-half"></i>
+      <h3>Temperature</h3>
+    <div class="button-container">
+        <button class="set-button" onclick="openPopup()">Set</button>
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-tint"></i>
+      <h3>Humidity</h3>
+     <div class="button-container">
+        <button class="set-button"  onclick="openPopup()">Set</button>
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-cloud"></i>
+      <h3>CO2</h3>
+      <div class="button-container">
+        <button class="set-button" onclick="openPopup()">Set</button>
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup">
+    <div class="popup-content">
+      <button class="close-button">&times;</button>
+      <h2>Set Temperature Range</h2>
+      <form>
+        <label for="temp-min">Minimum Temperature:</label>
+        <input type="number" id="temp-min" name="temp-min"><br><br>
+        <label for="temp-max">Maximum Temperature:</label>
+        <input type="number" id="temp-max" name="temp-max"><br><br>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script src = "main.js"></script>
 </body>
 </html>

@@ -6,7 +6,152 @@
   
   body{
       font-family: 'Ubuntu', sans-serif;
-      background-color: rgb(155, 21, 21);
-      margin: 0;
+      background: #000000;  
+      background: -webkit-linear-gradient(to right, #5d5d5d, #000000);  
+      background: linear-gradient(to left, #434343, #000000); 
+         margin: 0;
       padding: 0;
   }
+  h1{
+    color: white;
+    text-align: center;
+    text-emphasis: none;
+    margin-top: 3rem;
+    font-size:38px;
+    justify-content: center;
+   letter-spacing: 1.4px;
+       
+  } 
+  .general{
+    color: white;
+    padding: 10px;
+    position:absolute;
+    text-emphasis: none;
+    left: 5%;
+    margin-top: 2rem;
+    font-size:28px;
+    font-weight: 400;
+    letter-spacing: 1.3px;
+  }
+  .container {
+    display: flex;
+  justify-content: left;
+  align-items: left;
+  flex-wrap: wrap;
+    padding-right: 10%;
+    padding-left: 5.5%;
+    gap: 100px;
+    margin-top: 6.8%;
+  }
+  
+  .box {
+    width: 20%;
+     border-radius: 6px;
+    padding: 20px;
+   border: 1px solid black;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .box i {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  
+  .box h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .box p {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .set-button {
+    background-color: #b81d1d;
+    border-radius: 3px;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 10px 10px;
+    margin-right: 10%;
+    width: 40%;
+    cursor: pointer;
+    
+  }
+  
+  .send-button {
+    background-color: #1f5cab;
+    color: #ffffff;
+    border-radius: 3px;
+    width: 40%;
+    font-size: 16px;
+    border: none;
+    padding: 10px 10px ;
+    margin-left: 10%;
+    cursor: pointer;
+  }
+  
+  .set-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 30px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-color: #8c1b1b;
+   
+  }
+
+  .send-button:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 30px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-color: #123d76;
+  }
+
+  #modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  #set-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Popup content */
+.popup-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+}
