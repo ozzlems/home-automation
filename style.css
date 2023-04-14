@@ -6,7 +6,9 @@
   
   body{
       font-family: 'Ubuntu', sans-serif;
-      background-color: rgb(158, 13, 13);
+      background: #000000;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #5d5d5d, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       margin: 0;
       padding: 0;
   }
@@ -17,10 +19,12 @@
     position:absolute;
     text-align: center;
     text-emphasis: none;
-    top: 36px;
+    top: 40px;
     left: 41%;
-    font-size:35px;
-    letter-spacing: 1.5px;
+    font-size:36px;
+    
+   
+    
    } 
    .title{
     color: white;
@@ -28,10 +32,11 @@
     position:absolute;
     text-emphasis: none;
     top: 68px;
-    left: 10%;
-    margin-top: 34px;
+    left: 8%;
+    margin-top: 46px;
     padding-bottom: 40px;
     font-size:30px;
+    font-weight: 600;
     letter-spacing: 1.5px;
    }
 
@@ -56,6 +61,7 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
     width: 300px;
   height: 300px;
+  border: 0.5px solid rgb(224, 224, 224);
   opacity: 90%;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.684);
   overflow: hidden;
@@ -66,7 +72,7 @@
 
 .room:hover {
     transform: scale(1.2);
-    box-shadow:  0 0 40px #ffffffa4;
+    box-shadow:  0 0 40px #ffffffa4 ;
     margin: 30px;
     opacity: 95%;
    
@@ -76,6 +82,10 @@
 .room h2{
     text-align: center;
     margin-top: 22px;
+    font-weight: 600;
+
+   
+   
 }
 
 .room a {
@@ -87,3 +97,18 @@
     transition: all 0.3s ease-in-out;
 }
 
+.title2{
+  color: #ffffff;
+ }
+ 
+ #add-room{
+ color: white;
+ background-color: rgb(75, 192, 73);
+ display: flex;
+    flex-wrap: wrap;
+border: none;
+
+ padding: 1rem ;
+ cursor: pointer;
+ font-size: 1rem;
+ transition: all 0.3 ease; }
