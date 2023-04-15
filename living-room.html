@@ -28,40 +28,80 @@
       <h3>Temperature</h3>
     <div class="button-container">
         <button class="set-button" onclick="openPopup()">Set</button>
-        <button class="send-button">Send</button>
+      
       </div>
     </div>
     <div class="box">
       <i class="fas fa-tint"></i>
       <h3>Humidity</h3>
      <div class="button-container">
-        <button class="set-button"  onclick="openPopup()">Set</button>
-        <button class="send-button">Send</button>
+        <button id = "set-humidity-button" class="set-button"  onclick="openHumidityPopup()">Set</button>
+     
       </div>
     </div>
     <div class="box">
       <i class="fas fa-cloud"></i>
       <h3>CO2</h3>
       <div class="button-container">
-        <button class="set-button" onclick="openPopup()">Set</button>
-        <button class="send-button">Send</button>
+        <button class="set-button" onclick="openCo2Popup()">Set</button>
+      
       </div>
     </div>
   </div>
   
-  <div class="popup">
+  <div id="popup" class="popup">
     <div class="popup-content">
-      <button class="close-button">&times;</button>
+      <span class="close-button">&times;</span>
       <h2>Set Temperature Range</h2>
-      <form>
-        <label for="temp-min">Minimum Temperature:</label>
-        <input type="number" id="temp-min" name="temp-min"><br><br>
-        <label for="temp-max">Maximum Temperature:</label>
-        <input type="number" id="temp-max" name="temp-max"><br><br>
-        <button type="submit">Save</button>
-      </form>
+      <div class="input-container">
+        <label for="min">Min:</label>
+        <input type="number" id="min" name="min" placeholder="C°">
+      </div>
+      <div class="input-container">
+        <label for="max">Max:</label>
+        <input type="number" id="max" name="max" placeholder="C°">
+      </div>
+      <div class="input-container">
+        <label for="input">Value:</label>
+        <input type="number" id="input" name="input" placeholder="C°">
+      </div>
+      <div class ="button-container">
+     <button id="save-button">Save</button>
+      <button id="send-button" disabled>Send</button>
+    </div>
+      </div>
+  </div>
+  <div id="humidity-popup" class="popup">
+    <div class="popup-content">
+      <span id="close-humidity-popup-button" class="close-button">&times;</span>
+      <h2>Set Humidity </h2>
+      <div class="input-container">
+        <label for="input">Enter Value:</label>
+        <input type="number" id="humidity-input" name="input" placeholder="%">
+      </div>
+      <div class="button-container">
+      <button id="humidity-save-button">Save</button>
+      <button id="humidity-send-button" disabled>Send</button>
+    </div>
     </div>
   </div>
+  <div id="co2-popup" class="popup">
+    <div class="popup-content">
+      <span id="close-co2-popup-button" class="close-button">&times;</span>
+      <h2>Set CO2 </h2>
+      <div class="input-container">
+        <label for="input">Enter Value:</label>
+        <input type="number" id="co2-input" name="input" placeholder="%">
+      </div>
+      <div class="button-container">
+      <button id="co2-save-button">Save</button>
+      <button id="co2-send-button" disabled>Send</button>
+    </div>
+    </div>
+  </div>
+  
+  
+
 
   <script src = "main.js"></script>
 </body>
