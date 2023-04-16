@@ -86,8 +86,18 @@ function closePopup() {
   event.preventDefault();
   popup.style.display = "none";
 }
+function closeco2Popup(){
+  event.preventDefault();
+ co2Popup.style.display = "none";
+}
+closeHumidityPopupButton.addEventListener("click", function() {
+  humidityPopup.style.display = "none";
+});
+
 
 closeButton.addEventListener("click", closePopup);
+closeco2PopupButton.addEventListener("click" , closeco2Popup);
+
 
 window.onload = function() {
   document.getElementById("popup").style.display = "none";
@@ -100,22 +110,6 @@ co2SetButton.addEventListener("click", function() {
   co2Popup.style.display = "block";
 });
 
-closeHumidityPopupButton.addEventListener("click", function() {
-  humidityPopup.style.display = "none";
-});
-
-closeco2PopupButton.addEventListener("click", function() {
-  co2Popup.style.display = "none";
-});
-
-humiditySaveButton.addEventListener("click", function() {
-  event.preventDefault();
- 
-});
-co2SaveButton.addEventListener("click", function() {
-  event.preventDefault();
- 
-});
 
 humidityInput.addEventListener("input", function() {
   if (humidityInput.value !== "" || humidityInput.value < 0) {
@@ -140,14 +134,12 @@ function openHumidityPopup() {
 function openCo2Popup(){
   co2Popup.style.display = "block";
 }
+closeco2PopupButton.addEventListener("click", function() { co2Popup.style.display = "none"; });
 
 window.onclick = function(event) {
   if (event.target == humidityPopup) {
     humidityPopup.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == co2Popup) {
+  } else if (event.target == co2Popup) {
     co2Popup.style.display = "none";
   }
 }
