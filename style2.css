@@ -358,11 +358,20 @@
     margin-top: 20px;
   }
   
-   .light{
+   .light {
     width: 50%;
     flex-direction: column;
     display: flex;
-    margin-top: -20px;
+    margin-top: -2px;
+   }
+   .wifi{
+    width: 38%;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+     bottom: -10px;
+    padding-bottom: 20px;
+  
    }
   
   .device-container {
@@ -386,6 +395,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
   }
   
   .card-header {
@@ -450,6 +460,7 @@
     transition: .4s;
     border-radius: 50%;
   }
+
   
   input:checked + .slider {
     background-color: #038f26;
@@ -566,3 +577,119 @@
     margin-top: 20px;
   }
   
+  #wifi-card{
+    margin-left: 40%;
+    bottom: -30px;
+    position: absolute; }
+
+  #wifi-buttons{
+   padding-top: 2px ; 
+  }
+
+
+  .wifi-popup-timer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .timer-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .timer-inputs label {
+    font-weight: bold;
+  }
+  
+  
+  
+  .timer-inputs input[type="number"],
+  .timer-inputs input[type="time"] {
+    border: 1px solid #101010;
+    padding: 5px;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 14px;
+  }
+  
+  .timer-inputs input[type="number"] {
+    width: 120px;
+  }
+  
+  .timer-inputs input[type="time"] {
+    width: 20px;
+  }
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    padding: 1em  0em;
+    outline: none;
+  }
+  
+  
+  
+  .timer-toggle {
+    margin-top: 10px;
+  }
+  
+  .timer-toggle label {
+    font-weight: bold;
+  }
+  
+  .timer-toggle input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-left: 10px;
+  }
+  
+  .timer-send {
+    margin-top: 10px;
+  }
+  
+
+  .popup-content input[type="time"] {
+    width: 80px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  #wifi-save-button {
+    background-color:#3c903f;
+    border: none;
+    color: #fff;
+    padding: 10px 12px;
+   margin-right: 1rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #wifi-send-button {
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #wifi-send-button:disabled {
+    background-color: #bbbbbb;
+    cursor: default;
+  }
+  .input-container input[type="time"] {
+    width: 85%;
+    padding: 5px 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+  }
+
+  #wifi-set:disabled{
+    background-color: #bbbbbb;
+    cursor: default;
+  }

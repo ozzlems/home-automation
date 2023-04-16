@@ -110,7 +110,7 @@
       </div>
       <div class="card-btns">
         <button class="btn-set"  onclick="openLightPopup()">Set</button>
-        <button class="btn-delete">Delete</button>
+        <button id = "light-delete" class="btn-delete">Delete</button>
     </div>
       <div class="card-body">
         <label class="switch">
@@ -118,8 +118,24 @@
           <span class="slider round"></span>
         </label>
       </div>
+     </div>
+     <div id="wifi-card" class="card">
+      <img class="wifi" src="C:\Users\coxbe\Projects\home automation\wifi.png">
+      <div class="card-header">
+        <h3>Wifi</h3>
+      </div>
+      <div id ="wifi-buttons" class="card-btns">
+        <button id="wifi-set" class="btn-set" onclick="openWifiPopup()">Set</button>
+        <button id = "wifi-delete" class="btn-delete">Delete</button>
+      </div>
+      <div class="card-body">
+        <label class="switch">
+          <input type="checkbox" id="wifi-toggle-switch">
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
-    
+  </div>
     
     <div id="light-popup" class="popup">
       <div class="popup-content">
@@ -133,6 +149,24 @@
         <button id="light-save-button">Save</button>
         <button id="light-send-button" disabled>Send</button>
       </div>
+      </div>
+    </div>
+
+    <div id="wifi-popup" class="popup">
+      <div class="popup-content">
+        <span id="close-wifi-popup-button" class="close-button">&times;</span>
+        <h2>Set Wifi Timer</h2>
+        <div class="input-container">
+          <label for="wifi-on-time">Turn Wifi On : </label>
+          <input type="time" id="wifi-on-time" name="wifi-on-time" >
+        </div>
+        <div class="input-container">
+        <label for="wifi-off-time">Turn Wifi Off : </label>
+        <input type ="time" id = "wifi-off-time" name="wifi-off-time">
+      </div>
+      <div class="button-container">
+        <button id="wifi-save-button">Save</button>
+        <button id="wifi-send-button" disabled>Send</button>
       </div>
     </div>
   

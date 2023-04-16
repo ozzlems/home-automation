@@ -23,8 +23,131 @@ const lightSet = document.getElementById("set-light-button");
 const lightInput = document.getElementById("light-input");
 const lightSave = document.getElementById("light-save-button");
 const lightSend = document.getElementById("light-send-button");
+const deleteBtnLight = document.querySelector('#light-delete');
+const deleteBtnWifi = document.querySelector('#wifi-delete')
+const card = document.querySelector('.card');
+const wifiSet = document.getElementById("wifi-set");
+const wifiPopup = document.getElementById("wifi-popup");
+const closeWifiPopupButton = document.getElementById("close-wifi-popup-button");
+const wifiSaveButton = document.getElementById("wifi-save-button");
+const wifiSendButton = document.getElementById("wifi-send-button");
+const wifiOnTimeInput = document.getElementById("wifi-on-time");
+const wifiOffTimeInput = document.getElementById("wifi-off-time");
+const wifiToggleSwitch = document.getElementById("wifi-toggle-switch");
+
+let intervalId;
+
+function startWifiTimer(onTime, offTime) {
+  clearInterval(intervalId);
+  
+  const now = new Date();
+  const onTimeParts = onTime.split(":");
+  const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
+  const offTimeParts = offTime.split(":");wifiToggleSwitch.onchange = function() {
+    wifiSendButton.disabled = true;
+  }
+  const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
+  
+  if (onDateTime > now) {
+    intervalId = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime >= onDateTime) {
+        clearInterval(intervalId);
+        alert("Wifi is turned on!");
+      }
+    }, 1000);
+  } else if (offDateTime > now) {
+    intervalId = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime >= offDateTime) {
+        
+        clearInterval(intervalId);
+        alert("Wifi is turned off!");
+      }
+    }, 1000);
+   
+  } 
+   else {
+    alert("Invalid time settings.");
+  }
+}
 
 
+
+
+function openWifiPopup() {
+  wifiPopup.style.display = "block";
+}
+
+closeWifiPopupButton.onclick = function() {
+  wifiPopup.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == wifiPopup) {
+    wifiPopup.style.display = "none";
+  }
+}
+
+wifiSaveButton.onclick = function() {
+  const wifiOnTime = wifiOnTimeInput.value;
+  const wifiOffTime = wifiOffTimeInput.value;
+  
+  if (wifiToggleSwitch.checked) {
+    alert("Wifi is already turned on!");
+    return; }
+    else{
+    const offTime = new Date();
+    offTime.setHours(parseInt(wifiOffTime.split(":")[0]));
+    offTime.setMinutes(parseInt(wifiOffTime.split(":")[1]));
+    offTime.setSeconds(0);
+    
+    const now = new Date();
+    const remainingSeconds = (offTime.getTime() - now.getTime()) / 1000;
+    
+    setTimeout(function() {
+      wifiToggleSwitch.checked = false;
+      wifiSendButton.disabled = false;
+    }, remainingSeconds * 1000); }
+ 
+    // Set timer for turning on wifi
+    const onTime = new Date();
+    onTime.setHours(parseInt(wifiOnTime));
+    onTime.setMinutes(0);
+    onTime.setSeconds(0);
+    
+    const now = new Date();
+    const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
+    
+    setTimeout(function() {
+      
+      wifiSendButton.disabled = false;
+    }, remainingSeconds * 1000);
+  
+  wifiSendButton.disabled = false;
+}
+
+
+
+
+wifiSendButton.onclick = function() {
+  // Send wifi status to server
+  wifiPopup.style.display = "none";
+}
+
+deleteBtnLight.addEventListener('click', function() {
+  this.closest('.card').remove();
+});
+
+deleteBtnWifi.addEventListener('click', function() {
+  this.closest('.card').remove();
+});
+
+
+wifiToggleSwitch.addEventListener('change', function() {
+  
+  wifiSet.disabled = wifiToggleSwitch.checked;
+});
 
 
 
