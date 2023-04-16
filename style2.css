@@ -6,9 +6,10 @@
   
   body{
       font-family: 'Ubuntu', sans-serif;
-      background: #000000;  
-      background: -webkit-linear-gradient(to right, #5d5d5d, #000000);  
-      background: linear-gradient(to left, #434343, #000000); 
+      background: #1F1C2C;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #958eb5, #1F1C2C  );  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #67647a, #1F1C2C  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      
          margin: 0;
       padding: 0;
   }
@@ -375,7 +376,8 @@
   }
   
   .card {
-    background-color: #ffffff;
+    background-color: #fffffff6;
+  
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     height: 240px;
@@ -430,7 +432,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #9d9b9be1;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
@@ -514,3 +516,53 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 30px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-color: #741414;
   }
+
+  #light-save-button{
+    background-color:#3c903f;
+    border: none;
+    color: #fff;
+    padding: 10px 12px;
+   margin-right: 1rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+     
+  }
+
+  #light-send-button{
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+   
+   
+  }
+  
+  #light-send-button:disabled {
+    background-color: #ccc;
+    cursor: default;
+  }
+  
+  
+  #light-popup .popup-content {
+    width: 400px;
+    height: 300px;
+    margin-top: 20px;
+  
+    
+  }
+  
+  #light-popup .input-container {
+    margin-top: 30px;
+  }
+  
+  #light-popup .button-container {
+    margin-top: 20px;
+  }
+  
