@@ -68,7 +68,8 @@ const speakerSwitch = document.getElementById("speaker-switch");
 
 
 
-
+speakerSave.disabled = true;
+speakerSend.disabled = true;
 // save butonuna tıklandığında
 speakerSave.addEventListener("click", function() {
 
@@ -79,26 +80,23 @@ speakerSave.addEventListener("click", function() {
   
     speakerSend.disabled = false;
   });
+
   speakerSend.addEventListener("click", function() {
-    if(){
-    alert("The input is: " + speakerInput.value); }
-    else{
-        speakerSend.disabled = true;
-        alert("Please enter input"); 
-    }
+    const volume = parseInt(speakerInput.value);
+  alert("The volume you entered is: " + volume);
   });
   
   
   speakerInput.addEventListener("input", function() {
     
-  
-    if (speakerInput.value < 0) {
-      speakerSave.disabled = true;
-      speakerSend.disabled = true;
-    } else {
-      speakerSave.disabled = false;
-    }
-  });
+    if (speakerInput.value.trim() === "" || parseInt(speakerInput.value) < 0) {
+        speakerSave.disabled = true;
+        speakerSend.disabled = true;
+      } else {
+        speakerSave.disabled = false;
+        speakerSend.disabled = true;
+      }
+    });
   
   speakerSet.addEventListener("click", function() {
     speakerPopup.style.display = "block";
@@ -114,6 +112,17 @@ speakerSave.addEventListener("click", function() {
     }
   };
 
+  speakerSave.addEventListener("click", function() {
+    const volume = parseInt(speakerInput.value);
+  
+    // input değeri 0'dan küçükse veya boşsa, işlem yapmadan çık
+    if (volume < 0 || isNaN(volume)) {
+      return;
+    }
+  
+    speakerSend.disabled = false;
+  });
+  
 
 
 console.log(localStorage.getItem("temperature") + " is temperature  ");
