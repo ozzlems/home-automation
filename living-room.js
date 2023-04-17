@@ -66,16 +66,6 @@ electricClose.addEventListener("click", function() {
   electricPopup.style.display = "none";
 });
 
-electricSendButton.addEventListener("click", function() {
-  // Get the user input from the input field
-  const electricAmount = electricInput.value;
-
-  // Do something with the electric amount, such as store it in a variable or send it to a server
-  alert(`Electric amount set to ${electricAmount}`);
-
-  // Hide the popup
-  electricPopup.style.display = "none";
-});
 
 electricSendButton.addEventListener("click", function() {
   // Get the user input from the input field
@@ -83,9 +73,10 @@ electricSendButton.addEventListener("click", function() {
 
   // Do something with the electric amount, such as send it to a server
   console.log(`Sending electric amount of ${electricAmount}`);
-
+  localStorage.setItem("electric",userInput);
   // Hide the popup
   electricPopup.style.display = "none";
+ 
 });
 
 
@@ -285,11 +276,14 @@ doorSaveButton.onclick = function() {
 wifiSendButton.onclick = function() {
   // Send wifi status to server
   wifiPopup.style.display = "none";
+  console.log("a");
+  localStorage.setItem("wifiTime", wifiOffTimeInput.value + " - " + wifiOnTimeInput.value);
 }
 
 doorSendButton.onclick = function() {
   // Send wifi status to server
   doorPopup.style.display = "none";
+  localStorage.setItem("doorTime", doorOnTime.value + " - " + doorOffTime.value);
 }
 
 deleteBtnLight.addEventListener('click', function() {
@@ -305,7 +299,7 @@ deleteDoor.addEventListener('click', function() {
 });
 
 wifiToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("wifiCheck", wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
 
@@ -381,6 +375,7 @@ humiditySendButton.onclick = function() {
   }
   humiditySendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("humidity",userInput);
 };
 
 humiditySetButton.addEventListener("click", function() {
@@ -442,6 +437,7 @@ lightSend.onclick = function() {
   }
  lightSend.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("bright",userInput);
 };
 
 lightInput.addEventListener("input", function() {
@@ -462,6 +458,7 @@ co2SendButton.onclick = function() {
   }
   co2SendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("co2",userInput);
 };
 
 
