@@ -185,6 +185,15 @@
     color: #555;
     cursor: pointer;
   }
+  .close-electric-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+  }
   
   .input-container {
     display: flex;
@@ -300,6 +309,28 @@
     margin-top: 20px;
   
     
+  }
+  #electric-popup .popup-content {
+    width: 400px;
+    height: 280px;
+    margin-top: 50px;
+    
+  }
+  #electric-popup  .input-container {
+    margin-top: 1rem;
+  }
+  
+  #electric-send-button {
+    margin-bottom: 1.5rem;
+    width: 6rem;
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 12px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
   }
   
   #humidity-popup .input-container {
@@ -780,10 +811,7 @@
     cursor: default;
   }
 
-  .card.gray {
-    background-color: #f1f1f1;
-  }
-  
+
    
 
   .general-electricity {
@@ -842,6 +870,6 @@
     position: relative;
      bottom: -10px;
     padding-bottom: 20px;
-    margin-left: 4.8rem;
+    margin-left: 4.5rem;
 
  }

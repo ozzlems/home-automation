@@ -40,12 +40,53 @@ const lightSlider = document.getElementById("light-slider");
 const deleteDoor = document.querySelector('#door-delete');
 const doorPopup = document.getElementById("door-popup");
 const closeDoorPopupButton = document.getElementById("close-door-popup-button");
+
+
 const doorSet = document.getElementById("door-set");
 const doorToggleSwitch = document.getElementById("door-toggle-switch");
 const doorOnTime = document.getElementById("door-on-time");
 const doorOffTime = document.getElementById("door-off-time");
 const doorSaveButton = document.getElementById("door-save-button");
 const doorSendButton = document.getElementById("door-send-button");
+
+
+const electricPopup = document.getElementById("electric-popup");
+const electricClose = document.getElementById("close-electric-popup-button");
+const electricSetButton = document.getElementById("set-electric-button");
+const electricInput = document.getElementById("electric-input");
+const electricSendButton = document.getElementById("electric-send-button");
+
+console.log(localStorage.getItem("temperature") + " is temperature  ");
+
+electricSetButton.addEventListener("click", function() {
+  electricPopup.style.display = "block";
+});
+
+electricClose.addEventListener("click", function() {
+  electricPopup.style.display = "none";
+});
+
+electricSendButton.addEventListener("click", function() {
+  // Get the user input from the input field
+  const electricAmount = electricInput.value;
+
+  // Do something with the electric amount, such as store it in a variable or send it to a server
+  alert(`Electric amount set to ${electricAmount}`);
+
+  // Hide the popup
+  electricPopup.style.display = "none";
+});
+
+electricSendButton.addEventListener("click", function() {
+  // Get the user input from the input field
+  const electricAmount = electricInput.value;
+
+  // Do something with the electric amount, such as send it to a server
+  console.log(`Sending electric amount of ${electricAmount}`);
+
+  // Hide the popup
+  electricPopup.style.display = "none";
+});
 
 
 console.log(lightSet);
@@ -202,16 +243,17 @@ wifiSaveButton.onclick = function() {
 
 
 doorSaveButton.onclick = function() {
-  const DoorOnTime = DoorOnTime.value;
-  const DoorOffTime = wifiOffTime.value;
+  const DoorOnTime = doorOnTime.value;
+  const DoorOffTime = doorOffTime.value;
   
   if (doorToggleSwitch.checked) {
     alert("Lock is already on!");
-    return; }
+    return;
+   }
     else{
     const offTime = new Date();
-    offTime.setHours(parseInt(wifiOffTime.split(":")[0]));
-    offTime.setMinutes(parseInt(wifiOffTime.split(":")[1]));
+    offTime.setHours(parseInt(DoorOffTime.split(":")[0]));
+    offTime.setMinutes(parseInt(DoorOffTime.split(":")[1]));
     offTime.setSeconds(0);
     
     const now = new Date();
@@ -303,6 +345,7 @@ sendButton.onclick = function() {
   }
   sendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("temperature",userInput);
 };
 
 function openPopup() {

@@ -590,7 +590,7 @@
   
   #wifi-card{
     margin-left: 40%;
-    bottom: -29px;
+    top:31.8rem;
     position: absolute;
     background-color: #fffffff6; }
 
@@ -599,7 +599,7 @@
   }
 #door-card{
   margin-left: 81%;
-  bottom: -29px;
+  top:31.8rem;
   position: absolute;
   background-color: #fffffff6; 
   
@@ -780,6 +780,173 @@
     cursor: default;
   }
 
-  .card.gray {
-    background-color: #f1f1f1;
+  
+  #electric-popup .popup-content {
+    width: 400px;
+    height: 280px;
+    margin-top: 50px;
+    
   }
+  #electric-popup  .input-container {
+    margin-top: 1rem;
+  }
+  
+  #electric-send-button {
+    margin-bottom: 1.5rem;
+    width: 6rem;
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 12px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .general-electricity {
+    color: white;
+    padding: 10px;
+    position:absolute;
+    text-emphasis: none;
+    left: 10%;
+    margin-top: 19rem;
+    font-size:28px;
+    font-weight: 400;
+    letter-spacing: 1.3px;
+  }
+  
+
+  .container-electric{
+    position:absolute;
+      gap: 100px;
+      margin-top: 23.5rem;
+      padding: 10px;
+      margin-bottom: 5%;
+      margin-left: -28.5rem;
+  }
+  .electricity {
+    margin-bottom: 1rem;
+  }
+
+  .box-electric{
+    width: 28%;
+     border-radius: 6px;
+    padding: 20px;
+   border: 1px solid black;
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    margin-left: 21rem;
+  }
+  #set-electric-button {
+    background-color: #b81d1d;
+    border-radius: 4px;
+    color: #fff;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+   
+    width: 5rem;
+    cursor: pointer; }
+    
+  
+ .lightning{
+  width: 38%;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+     bottom: -10px;
+    padding-bottom: 20px;
+    margin-left: 4.5rem;
+
+ }
+
+
+ #water-popup .popup-content {
+    width: 300px;
+    height: 320px;
+    margin-top: 50px;
+    
+  }
+  #water-popup  .input-container {
+    margin-top: 1rem;
+  }
+  
+  #water-send-button {
+    margin-bottom: 1.5rem;
+    width: 6rem;
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 12px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .general-water {
+    color: white;
+    padding: 10px;
+    position:absolute;
+    text-emphasis: none;
+    left: 35.8%;
+    margin-top: 19.2rem;
+    font-size:28px;
+    font-weight: 400;
+    letter-spacing: 1.3px;
+  }
+  
+
+  .container-water{
+    position:absolute;
+      gap: 100px;
+      margin-top: 23.5rem;
+      padding: 10px;
+      margin-bottom: 5%;
+      margin-left: -28.5rem;
+    
+  }
+
+  .box-water{
+    width: 21.9%;
+     border-radius: 6px;
+    padding: 20px;
+   border: 1px solid black;
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    margin-left: 45rem;
+    width: 275px;
+    height: 235px;
+  }
+  #set-water-button {
+    background-color: #b81d1d;
+    border-radius: 4px;
+    color: #fff;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+ width: 5rem;
+ margin-top: 1.2rem;
+cursor: pointer; }
+    
+  
+ .water{
+  width: 30%;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+     bottom: -10px;
+     margin-top: 0.2rem ;
+    padding-bottom: 33px;
+    margin-left:5rem;
+
+ }
+
+ 

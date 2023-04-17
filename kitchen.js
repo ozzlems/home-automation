@@ -51,7 +51,6 @@ const electricPopup = document.getElementById("electric-popup");
 const electricClose = document.getElementById("close-electric-popup-button");
 const electricSetButton = document.getElementById("set-electric-button");
 const electricInput = document.getElementById("electric-input");
-const electricSaveButton = document.getElementById("electric-save-button");
 const electricSendButton = document.getElementById("electric-send-button");
 
 
@@ -60,7 +59,37 @@ console.log(wifiSet);
 
 let intervalId;
 
-
+electricSetButton.addEventListener("click", function() {
+    electricPopup.style.display = "block";
+  });
+  
+  electricClose.addEventListener("click", function() {
+    electricPopup.style.display = "none";
+  });
+  
+  electricSendButton.addEventListener("click", function() {
+    // Get the user input from the input field
+    const electricAmount = electricInput.value;
+  
+    // Do something with the electric amount, such as store it in a variable or send it to a server
+    alert(`Electric amount set to ${electricAmount}`);
+  
+    // Hide the popup
+    electricPopup.style.display = "none";
+  });
+  
+  electricSendButton.addEventListener("click", function() {
+    // Get the user input from the input field
+    const electricAmount = electricInput.value;
+  
+    // Do something with the electric amount, such as send it to a server
+    console.log(`Sending electric amount of ${electricAmount}`);
+  
+    // Hide the popup
+    electricPopup.style.display = "none";
+  });
+  
+  
 
 
 function startWifiTimer(onTime, offTime) {
