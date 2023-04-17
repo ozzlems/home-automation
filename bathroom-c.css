@@ -848,12 +848,13 @@
   .box-water{
     width: 21%;
      border-radius: 6px;
-    padding: 20px;
-   border: 1px solid black;
+    border: 1px solid black;
     text-align: center;
     background-color: #fff;
     margin-bottom: 2rem;
     margin-left: 45rem;
+    display: flex;
+    
   
   }
   #set-electric-button {
