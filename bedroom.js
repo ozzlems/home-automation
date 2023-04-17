@@ -59,7 +59,7 @@ const electricSendButton = document.getElementById("electric-send-button");
 const speakerPopup = document.getElementById("speaker-popup");
 const closeSpeaker = document.getElementById("close-speaker-popup-button");
 const speakerSet = document.getElementById("set-speaker-button");
-const speakerInput = document.getElementById("speaker-input");
+const speakerInput = document.getElementById("volume-input");
 const speakerSave = document.getElementById("speaker-save-button");
 const speakerSend = document.getElementById("speaker-send-button");
 const deleteSpeaker = document.querySelector('#speaker-delete');
@@ -68,67 +68,51 @@ const speakerSwitch = document.getElementById("speaker-switch");
 
 
 
-speakerSet.onclick = function() {
-    speakerPopup.style.display = "block";
-  }
-  closeSpeaker.onclick = function() {
-    speakerPopup.style.display = "none";
-  }
+
+// save butonuna tıklandığında
+speakerSave.addEventListener("click", function() {
+
   
-  window.onclick = function(event) {
-    if (event.target == speakerPopup) {
-      speakerPopup.style.display = "none";
-    }
-  }
-  
-  speakerInput.oninput = function() {
-    speakerSend.disabled = true;
-  }
-
-
-speakerSend.onclick = function() {
-  speakerPopup.style.display = "none";
-  }
-
-  speakerSave.onclick = function(){
-    let userInput = parseInt(speakerInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number !");
-    speakerSave.disabled = true;
-    return;
-  }
-  speakerSave.disabled = false;
-}
-
-speakerSend.onclick = function(){
-
-    let userInput = parseInt(speakerInput.value);
-    if (isNaN(userInput)) {
-      alert("Please enter a valid number!");
+    if (speakerInput.value < 0) {
       return;
     }
-    speakerSend.disabled = true;
-    alert("User input: " + userInput);
-  };
+  
+    speakerSend.disabled = false;
+  });
+  speakerSend.addEventListener("click", function() {
+    if(){
+    alert("The input is: " + speakerInput.value); }
+    else{
+        speakerSend.disabled = true;
+        alert("Please enter input"); 
+    }
+  });
+  
+  
+  speakerInput.addEventListener("input", function() {
+    
+  
+    if (speakerInput.value < 0) {
+      speakerSave.disabled = true;
+      speakerSend.disabled = true;
+    } else {
+      speakerSave.disabled = false;
+    }
+  });
   
   speakerSet.addEventListener("click", function() {
     speakerPopup.style.display = "block";
   });
   
-
-  speakerInput.addEventListener("input", function() {
-    if (speakerInput.value !== "" || speakerInput.value < 0) {
-      speakerSend.disabled = false;
-    } 
-    speakerSend.disabled = true;
-  });
-
-  function openSpeakerPopup(){
-    speakerPopup.style.display = "block";
-}
-
-
-
+  closeSpeaker.onclick = function() {
+    speakerPopup.style.display = "none";
+  };
+  
+  window.onclick = function(event) {
+    if (event.target == speakerPopup) {
+      speakerPopup.style.display = "none";
+    }
+  };
 
 
 
@@ -613,9 +597,7 @@ window.onclick = function(event) {
   }
   else if (event.target == lightPopup) {
   lightPopup.style.display = "none"; }
-
+  
   
 }
-
-
 

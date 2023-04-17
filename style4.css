@@ -650,7 +650,7 @@
   .timer-inputs label {
     font-weight: bold;
   }
-  
+   
   
   
   .timer-inputs input[type="number"],
@@ -769,6 +769,7 @@
     box-sizing: border-box;
     border: 2px solid black;
   }
+  
   #set-light-button:disabled {
     background-color: #bbbbbb;
     cursor: default;
@@ -886,3 +887,105 @@
  #speaker-card {
     left: 71.5%;
  }
+ #speaker-popup .popup-content {
+    width: 400px;
+    height: 350px;
+    margin-top: 50px;
+    
+  }
+  #speaker-popup  .input-container {
+    margin-top: 1rem;
+  }
+
+
+  
+  #speaker-send-button {
+    background-color: #1f5cab;
+    color: #ffffff;
+    border-radius: 5px;
+    width:5rem;
+    height: 70%;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    text-align: center;
+    padding-left: 12%;
+  }
+  #speaker-save-button {
+    background-color:#3c903f;
+    width:5rem;
+    height: 70%;
+    border: none;
+    display: flex;
+    text-align: center;
+    padding-left: 12%;
+    position: relative;
+    bottom: 1rem;
+    color: #fff;
+    margin-right: 1rem;
+   margin-top: 1rem;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+   #speaker-save-button:disabled {
+    background-color: #bbbbbb;
+    cursor: default;
+   }
+   #speaker-send-button:disabled {
+    background-color: #bbbbbb;
+    cursor: default;
+   }
+ 
+  .container-speaker{
+    position:absolute;
+      gap: 100px;
+      margin-top: 23.5rem;
+      padding: 10px;
+      margin-bottom: 5%;
+      margin-left: -28.5rem;
+    
+  }
+  
+  
+  #set-speaker-button {
+    background-color: #b81d1d;
+    border-radius: 4px;
+    color: #fff;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+  width: 5rem;
+  margin-top: 1.125rem;
+  cursor: pointer; }
+    
+  
+  
+  .close-speaker-popup-button{
+  
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  
+  }
+  
+  #color-input {
+    width: 120px;
+    height: 50px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    border:none;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+ }
+  
+ 
