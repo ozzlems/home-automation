@@ -73,9 +73,10 @@ electricSendButton.addEventListener("click", function() {
 
   // Do something with the electric amount, such as send it to a server
   console.log(`Sending electric amount of ${electricAmount}`);
-  localStorage.setItem("electric",userInput);
+ 
   // Hide the popup
   electricPopup.style.display = "none";
+  localStorage.setItem("electric",electricInput.value);
  
 });
 

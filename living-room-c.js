@@ -48,4 +48,4 @@ co2Root.innerHTML += '<h3>' + co2 + '</h3>';
 wifiRoot.innerHTML +=  '<h3>' + wifiOn + '</h3>';
 brightRoot.innerHTML += '<h3>' + "Brightness : " +  bright + '</h3>';
 doorRoot.innerHTML += '<h4>' + " Open Between : " + doorString + '</h4>';
-electricRoot.innerHTML += '<h3>' + + electric + " kWh"+ '</h3>';
+electricRoot.innerHTML += '<h3>' +  electric + " kWh"+ '</h3>';
