@@ -56,6 +56,82 @@ const electricSetButton = document.getElementById("set-electric-button");
 const electricInput = document.getElementById("electric-input");
 const electricSendButton = document.getElementById("electric-send-button");
 
+const speakerPopup = document.getElementById("speaker-popup");
+const closeSpeaker = document.getElementById("close-speaker-popup-button");
+const speakerSet = document.getElementById("set-speaker-button");
+const speakerInput = document.getElementById("speaker-input");
+const speakerSave = document.getElementById("speaker-save-button");
+const speakerSend = document.getElementById("speaker-send-button");
+const deleteSpeaker = document.querySelector('#speaker-delete');
+const colorInput = document.getElementById("color-input");
+const speakerSwitch = document.getElementById("speaker-switch");
+
+
+
+speakerSet.onclick = function() {
+    speakerPopup.style.display = "block";
+  }
+  closeSpeaker.onclick = function() {
+    speakerPopup.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == speakerPopup) {
+      speakerPopup.style.display = "none";
+    }
+  }
+  
+  speakerInput.oninput = function() {
+    speakerSend.disabled = true;
+  }
+
+
+speakerSend.onclick = function() {
+  speakerPopup.style.display = "none";
+  }
+
+  speakerSave.onclick = function(){
+    let userInput = parseInt(speakerInput.value);
+  if (isNaN(userInput)) {
+    alert("Please enter a valid number !");
+    speakerSave.disabled = true;
+    return;
+  }
+  speakerSave.disabled = false;
+}
+
+speakerSend.onclick = function(){
+
+    let userInput = parseInt(speakerInput.value);
+    if (isNaN(userInput)) {
+      alert("Please enter a valid number!");
+      return;
+    }
+    speakerSend.disabled = true;
+    alert("User input: " + userInput);
+  };
+  
+  speakerSet.addEventListener("click", function() {
+    speakerPopup.style.display = "block";
+  });
+  
+
+  speakerInput.addEventListener("input", function() {
+    if (speakerInput.value !== "" || speakerInput.value < 0) {
+      speakerSend.disabled = false;
+    } 
+    speakerSend.disabled = true;
+  });
+
+  function openSpeakerPopup(){
+    speakerPopup.style.display = "block";
+}
+
+
+
+
+
+
 console.log(localStorage.getItem("temperature") + " is temperature  ");
 
 electricSetButton.addEventListener("click", function() {
@@ -313,6 +389,10 @@ deleteDoor.addEventListener('click', function() {
   this.closest('.card').remove();
 });
 
+deleteSpeaker.addEventListener('click', function() {
+    this.closest('.card').remove();
+  });
+
 wifiToggleSwitch.addEventListener('change', function() {
   
   wifiSet.disabled = wifiToggleSwitch.checked;
@@ -327,6 +407,10 @@ lightSlider.addEventListener('change', function() {
   lightSet.disabled = !lightSlider.checked;
 });
 
+speakerSwitch.addEventListener('change', function() {
+  
+    speakerSet.disabled = speakerSwitch.checked;
+  });
 
 
 
@@ -382,6 +466,8 @@ humiditySaveButton.onclick = function() {
   humiditySendButton.disabled = false;
 };
 
+
+
 humiditySendButton.onclick = function() {
   let userInput = parseInt(humidityInput.value);
   if (isNaN(userInput)) {
@@ -408,7 +494,6 @@ humidityInput.addEventListener("input", function() {
   } 
   humiditySendButton.disabled = true;
 });
-
 
 
 
@@ -508,7 +593,6 @@ co2Input.addEventListener("input", function() {
    co2SetButton.disabled = true;
   }
 });
-
 
 
 function openCo2Popup(){
