@@ -23,6 +23,10 @@
    letter-spacing: 1.4px;
        
   } 
+
+  .height-up {
+    margin-top: 15px;
+  }
   .general{
     color: white;
     padding: 10px;
@@ -870,12 +874,6 @@
     position: relative;
      bottom: -10px;
     padding-bottom: 20px;
-    margin-left: 4.5rem
-    
-    ;
+    margin-left: 4.5rem;
 
- }
-
- .height-up {
-  margin-top: -15px;
  }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href="living-room-c.css";/>
+    <link rel = "stylesheet" href="bedroom-c.css";/>
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -13,15 +13,15 @@
   <link rel="preconnect" href="https://fonts                                                                                                                                                                                                                                                                              .googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Cookie&family=Kalam&family=Montserrat:wght@200;700&family=NTR&family=Quicksand&family=Satisfy&family=Swanky+and+Moo+Moo&family=Ubuntu:wght@300;400&family=VT323&display=swap" rel="stylesheet">
-    <title>Living Room </title>
+    <title> Bedroom </title>
 </head>
 <body>
-  <a href="index.html" class="goBack">
+  <a href="consumer.html" class="goBack">
     <img width="40px" height="40px" src="back.png"/>
     <p>Back</p>
   </a>
   <header>
-    <h1> Living Room </h1>
+    <h1> Bedroom </h1>
    </header>
    
    <h2 class = "general">General Sensors</h2>
@@ -30,26 +30,17 @@
     <div class="box">
       <i class="fas fa-thermometer-half"></i>
       <h3>Temperature</h3>
-    <div class="button-container">
-        <button class="set-button" onclick="openPopup()">Set</button>
-      
-      </div>
+   
     </div>
     <div class="box">
       <i class="fas fa-tint"></i>
       <h3>Humidity</h3>
-     <div class="button-container">
-        <button id = "set-humidity-button" class="set-button"  onclick="openHumidityPopup()">Set</button>
      
-      </div>
     </div>
     <div class="box">
       <i class="fas fa-cloud"></i>
       <h3>CO2</h3>
-      <div class="button-container">
-        <button class="set-button" id="set-co2-button" onclick="openCo2Popup()">Set</button>
       
-      </div>
     </div>
   </div>
   
@@ -113,49 +104,62 @@
      <h3>Light 1</h3>
       </div>
       <div class="card-btns">
-        <button id="set-light-button" class="btn-set"  onclick="openLightPopup()">Set</button>
-        <button id = "light-delete" class="btn-delete">Delete</button>
+       
     </div>
       <div class="card-body">
-        <label class="switch" id="light-switch">
-          <input id="light-slider" type="checkbox" >
-          <span class="slider round"></span>
-        </label>
+        
       </div>
      </div>
-     <div id="wifi-card" class="card">
+     <div id="wifi-card" class="card height-up">
       <img class="wifi" src="wifi.png">
       <div class="card-header">
         <h3>Wifi</h3>
       </div>
       <div id ="wifi-buttons" class="card-btns">
-        <button id="wifi-set" class="btn-set" onclick="openWifiPopup()">Set</button>
-        <button id = "wifi-delete" class="btn-delete">Delete</button>
+       
       </div>
       <div class="card-body">
-        <label class="switch">
-          <input type="checkbox" id="wifi-toggle-switch">
-          <span class="slider round"></span>
-        </label>
       </div>
     </div>
-    <div id="door-card" class="card">
+    <div id="door-card" class="card height-up">
       <img class="door" src="door.png">
       <div class="card-header">
         <h3>Door Lock</h3>
       </div>
       <div id ="door-buttons" class="card-btns">
-        <button id="door-set" class="btn-set" onclick="openDoorPopup()">Set</button>
-        <button id = "door-delete" class="btn-delete">Delete</button>
       </div>
       <div class="card-body">
-        <label class="switch">
-          <input type="checkbox" id="door-toggle-switch">
-          <span class="slider round"></span>
-        </label>
-       
-      </div>
+       </div>
   </div>
+
+  <div id = "speaker-card" class="card">
+    <img class="speaker" src="smart-speaker.png">
+    <div class="card-header">
+   <h3>Smart Speaker</h3>
+    </div>
+    <div class="card-btns">
+      
+  </div>
+    <div class="card-body">
+      
+    </div>
+   </div>
+   <div class="electric-usage">
+    <h2 class = "general-electricity">Electricy Usage</h2>
+    <div class="container-electric">
+      <div class="box-electric">
+        <img class="lightning" src="lightning.png">
+        <h2 class="electricity">Consumption</h2>
+
+      <div class="button-container">
+     
+        </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+
     
     <div id="light-popup" class="popup">
       <div class="popup-content">
@@ -207,26 +211,28 @@
         <button id="door-send-button" disabled>Send</button>
       </div>
     </div>
-  
   </div>
- 
-
-
-  <div class="electric-usage">
-    <h2 class = "general-electricity">Electricy Usage</h2>
-    <div class="container-electric">
-      <div class="box-electric">
-        <img class="lightning" src="lightning.png">
-        <h2 class="electricity">Consumption</h2>
-
+  
+  <div id="speaker-popup" class="popup">
+    <div class="popup-content">
+      <span id="close-speaker-popup-button" class="close-button">&times;</span>
+      <h2>Set Values </h2>
+      <div class="input-container">
+        <label for="input">Set Volume :</label>
+        <input type="number" id="volume-input" name="input" placeholder="%">
+      </div>
+      <div class="input-container">
+        <label id="color-name" for="color-input">Choose Color:</label>
+        <input type="color" id="color-input" name="color" value="#965dcf" />
+      </div>
       <div class="button-container">
-      <button id="set-electric-button">Set</button>
-        </div>
+      <button id="speaker-save-button">Save</button>
+      <button id="speaker-send-button" disabled>Send</button>
+    </div>
     </div>
   </div>
-  </div>
- 
-  <div id="electric-popup" class="popup">
+
+<div id="electric-popup" class="popup">
     <div class="popup-content">
       <span id="close-electric-popup-button" class="close-electric-button">&times;</span>
       <h2> Consumption Amount </h2>
@@ -245,6 +251,6 @@
 
 
 
-  <script src = "living-room.js"></script>
+  <script src = "bedroom-c.js"></script>
 </body>
 </html>
