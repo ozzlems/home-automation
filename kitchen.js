@@ -24,8 +24,9 @@ const lightInput = document.getElementById("light-input");
 const lightSave = document.getElementById("light-save-button");
 const lightSend = document.getElementById("light-send-button");
 const deleteBtnLight = document.querySelector('#light-delete');
-const deleteBtnWifi = document.querySelector('#wifi-delete')
+const deleteBtnWifi = document.querySelector('#wifi-delete');
 const card = document.querySelector('.card');
+
 const wifiSet = document.getElementById("wifi-set");
 const wifiPopup = document.getElementById("wifi-popup");
 const closeWifiPopupButton = document.getElementById("close-wifi-popup-button");
@@ -34,8 +35,33 @@ const wifiSendButton = document.getElementById("wifi-send-button");
 const wifiOnTimeInput = document.getElementById("wifi-on-time");
 const wifiOffTimeInput = document.getElementById("wifi-off-time");
 const wifiToggleSwitch = document.getElementById("wifi-toggle-switch");
+const lightSwitch = document.getElementById("light-switch")
+const lightSlider = document.getElementById("light-slider");
+const deleteDoor = document.querySelector('#door-delete');
+const doorPopup = document.getElementById("door-popup");
+const closeDoorPopupButton = document.getElementById("close-door-popup-button");
+const doorSet = document.getElementById("door-set");
+const doorToggleSwitch = document.getElementById("door-toggle-switch");
+const doorOnTime = document.getElementById("door-on-time");
+const doorOffTime = document.getElementById("door-off-time");
+const doorSaveButton = document.getElementById("door-save-button");
+const doorSendButton = document.getElementById("door-send-button");
+
+const electricPopup = document.getElementById("electric-popup");
+const electricClose = document.getElementById("close-electric-popup-button");
+const electricSetButton = document.getElementById("set-electric-button");
+const electricInput = document.getElementById("electric-input");
+const electricSaveButton = document.getElementById("electric-save-button");
+const electricSendButton = document.getElementById("electric-send-button");
+
+
+console.log(lightSet);
+console.log(wifiSet);
 
 let intervalId;
+
+
+
 
 function startWifiTimer(onTime, offTime) {
   clearInterval(intervalId);
@@ -72,22 +98,76 @@ function startWifiTimer(onTime, offTime) {
   }
 }
 
-
-
-
 function openWifiPopup() {
   wifiPopup.style.display = "block";
 }
 
+
 closeWifiPopupButton.onclick = function() {
   wifiPopup.style.display = "none";
 }
+
+
+function startDoorTimer(onTime, offTime) {
+  clearInterval(intervalId);
+  
+  const now = new Date();
+  const onTimeParts = onTime.split(":");
+  const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
+  const offTimeParts = offTime.split(":");wifiToggleSwitch.onchange = function() {
+    doorSendButton.disabled = true;
+  }
+  const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
+  
+  if (onDateTime > now) {
+    intervalId = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime >= onDateTime) {
+        clearInterval(intervalId);
+        alert("Door is locked on!");
+      }
+    }, 1000);
+  } else if (offDateTime > now) {
+    intervalId = setInterval(() => {
+      const currentTime = new Date();
+      if (currentTime >= offDateTime) {
+        
+        clearInterval(intervalId);
+        alert("Wifi is locked off!");
+      }
+    }, 1000);
+   
+  } 
+   else {
+    alert("Invalid time settings.");
+  }
+}
+
+
+function openDoorPopup() {
+  doorPopup.style.display = "block";
+}
+
+
+closeDoorPopupButton.onclick = function() {
+  doorPopup.style.display = "none";
+}
+
+
+window.onclick = function(event) {
+  if (event.target == doorPopup) {
+    doorPopup.style.display = "none";
+  }
+}
+
+
 
 window.onclick = function(event) {
   if (event.target == wifiPopup) {
     wifiPopup.style.display = "none";
   }
 }
+
 
 wifiSaveButton.onclick = function() {
   const wifiOnTime = wifiOnTimeInput.value;
@@ -120,7 +200,7 @@ wifiSaveButton.onclick = function() {
     const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
     
     setTimeout(function() {
-      
+      alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
       wifiSendButton.disabled = false;
     }, remainingSeconds * 1000);
   
@@ -128,11 +208,53 @@ wifiSaveButton.onclick = function() {
 }
 
 
+doorSaveButton.onclick = function() {
+  const DoorOnTime = DoorOnTime.value;
+  const DoorOffTime = wifiOffTime.value;
+  
+  if (doorToggleSwitch.checked) {
+    alert("Lock is already on!");
+    return; }
+    else{
+    const offTime = new Date();
+    offTime.setHours(parseInt(wifiOffTime.split(":")[0]));
+    offTime.setMinutes(parseInt(wifiOffTime.split(":")[1]));
+    offTime.setSeconds(0);
+    
+    const now = new Date();
+    const remainingSeconds = (offTime.getTime() - now.getTime()) / 1000;
+    
+    setTimeout(function() {
+      doorToggleSwitch.checked = false;
+      doorSendButton.disabled = false;
+    }, remainingSeconds * 1000); }
+ 
+    // Set timer for turning on wifi
+    const onTime = new Date();
+    onTime.setHours(parseInt(doorOnTime));
+    onTime.setMinutes(0);
+    onTime.setSeconds(0);
+    
+    const now = new Date();
+    const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
+    
+    setTimeout(function() {
+      alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
+      doorSendButton.disabled = false;
+    }, remainingSeconds * 1000);
+  
+  doorSendButton.disabled = false;
+}
 
 
 wifiSendButton.onclick = function() {
   // Send wifi status to server
   wifiPopup.style.display = "none";
+}
+
+doorSendButton.onclick = function() {
+  // Send wifi status to server
+  doorPopup.style.display = "none";
 }
 
 deleteBtnLight.addEventListener('click', function() {
@@ -143,11 +265,29 @@ deleteBtnWifi.addEventListener('click', function() {
   this.closest('.card').remove();
 });
 
+deleteDoor.addEventListener('click', function() {
+  this.closest('.card').remove();
+});
 
 wifiToggleSwitch.addEventListener('change', function() {
   
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
+
+doorToggleSwitch.addEventListener('change', function() {
+  
+  doorSet.disabled = doorToggleSwitch.checked;
+});
+lightSet.disabled = true;
+lightSlider.addEventListener('change', function() {
+  lightSet.disabled = !lightSlider.checked;
+});
+
+
+
+
+
+
 
 
 
@@ -173,6 +313,7 @@ sendButton.onclick = function() {
 };
 
 function openPopup() {
+ 
   event.preventDefault();
   popup.style.display = "block";
 }
@@ -242,6 +383,9 @@ co2SaveButton.onclick = function() {
   }
   co2SendButton.disabled = false;
 };
+
+
+
 
  lightSave.onclick = function() {
   let userInput = parseInt(lightInput.value);

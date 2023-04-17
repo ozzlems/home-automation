@@ -390,7 +390,7 @@
     align-items:center;
     flex-direction: column;
     height: 400px;
- margin-left: -61rem;
+ margin-left: -60rem;
     margin-top: 8rem;
   }
   
@@ -590,7 +590,7 @@
   
   #wifi-card{
     margin-left: 40%;
-    top:31.8rem;
+    bottom: -29px;
     position: absolute;
     background-color: #fffffff6; }
 
@@ -599,8 +599,8 @@
   }
 #door-card{
   margin-left: 81%;
-  top:31.8rem;
-   position: absolute;
+  bottom: -29px;
+  position: absolute;
   background-color: #fffffff6; 
   
 }
@@ -783,65 +783,3 @@
   .card.gray {
     background-color: #f1f1f1;
   }
-  
-   
-
-  .general-electricity {
-    color: white;
-    padding: 10px;
-    position:absolute;
-    text-emphasis: none;
-    left: 10%;
-    margin-top: 19rem;
-    font-size:28px;
-    font-weight: 400;
-    letter-spacing: 1.3px;
-  }
-  
-
-  .container-electric{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-  }
-  .electricity {
-    margin-bottom: 1rem;
-  }
-
-  .box-electric{
-    width: 28%;
-     border-radius: 6px;
-    padding: 20px;
-   border: 1px solid black;
-    text-align: center;
-    background-color: #fff;
-    margin-bottom: 2rem;
-    margin-left: 21rem;
-  }
-  #set-electric-button {
-    background-color: #b81d1d;
-    border-radius: 4px;
-    color: #fff;
-    margin: auto;
-    align-items: center;
-    text-align: center;
-    border: none;
-    font-size: 16px;
-   
-    width: 5rem;
-    cursor: pointer; }
-    
-  
- .lightning{
-  width: 38%;
-    flex-direction: column;
-    display: flex;
-    position: relative;
-     bottom: -10px;
-    padding-bottom: 20px;
-    margin-left: 4.8rem;
-
- }
