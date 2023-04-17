@@ -7,7 +7,7 @@
   body{
       font-family: 'Ubuntu', sans-serif;
       background: #1F1C2C;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to left, #958eb5, #1F1C2C  );  /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(to left, #958db9, #1F1C2C  );  /* Chrome 10-25, Safari 5.1-6 */
       background: linear-gradient(to left, #67647a, #1F1C2C  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       
          margin: 0;
@@ -185,6 +185,15 @@
     color: #555;
     cursor: pointer;
   }
+  .close-electric-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+  }
   
   .input-container {
     display: flex;
@@ -301,6 +310,28 @@
   
     
   }
+  #electric-popup .popup-content {
+    width: 400px;
+    height: 280px;
+    margin-top: 50px;
+    
+  }
+  #electric-popup  .input-container {
+    margin-top: 1rem;
+  }
+  
+  #electric-send-button {
+    margin-bottom: 1.5rem;
+    width: 6rem;
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 12px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
   
   #humidity-popup .input-container {
     margin-top: 30px;
@@ -390,7 +421,7 @@
     align-items:center;
     flex-direction: column;
     height: 400px;
- margin-left: -60rem;
+ margin-left: -61rem;
     margin-top: 8rem;
   }
   
@@ -600,7 +631,7 @@
 #door-card{
   margin-left: 81%;
   top:31.8rem;
-  position: absolute;
+   position: absolute;
   background-color: #fffffff6; 
   
 }
@@ -780,32 +811,11 @@
     cursor: default;
   }
 
-  
-  #electric-popup .popup-content {
-    width: 400px;
-    height: 330px;
-    margin-top: 50px;
-    
-  }
-  #electric-popup  .input-container {
-    margin-top: 1rem;
-  }
-  
-  #electric-send-button {
-    margin-bottom: 1.5rem;
-    width: 6rem;
-    border: none;
-    background-color: #4c66c3;
-    color: #fff;
-    padding: 12px 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
+
+   
 
   .general-electricity {
-    color: rgb(255, 255, 255);
+    color: white;
     padding: 10px;
     position:absolute;
     text-emphasis: none;
@@ -835,35 +845,23 @@
     padding: 20px;
    border: 1px solid black;
     text-align: center;
-    background-color: #ffffff;
-    margin-bottom: 2rem;
-    margin-left: 21rem;
-  }
-  .box-water{
-    width: 21.9%;
-     border-radius: 6px;
-    padding: 20px;
-   border: 1px solid black;
-    text-align: center;
     background-color: #fff;
     margin-bottom: 2rem;
-    margin-left: 45rem;
-  
+    margin-left: 21rem;
   }
   #set-electric-button {
     background-color: #b81d1d;
     border-radius: 4px;
-    color: #ffffff;
+    color: #fff;
     margin: auto;
     align-items: center;
     text-align: center;
     border: none;
     font-size: 16px;
+   
     width: 5rem;
-    cursor: pointer !important; 
-    z-index: 999;
-  }
-
+    cursor: pointer; }
+    
   
  .lightning{
   width: 38%;
@@ -876,98 +874,15 @@
 
  }
 
-
- #water-popup .popup-content {
-    width: 400px;
-    height: 330px;
-    margin-top: 50px;
-    
-  }
-  #water-popup  .input-container {
-    margin-top: 1rem;
-  }
-  
-  #water-send-button {
-    margin-bottom: 2.5rem;
-    width: 6rem;
-    border: none;
-    background-color: #4c66c3;
-    color: #fff;
-    padding: 12px 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .general-water {
-    color: white;
-    padding: 10px;
-    position:absolute;
-    text-emphasis: none;
-    left: 35.8%;
-    margin-top: 19.2rem;
-    font-size:28px;
-    font-weight: 400;
-    letter-spacing: 1.3px;
-  }
-  
-
-  .container-water{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-    
-  }
-
- 
-  #set-water-button {
-    background-color: #b81d1d;
-    border-radius: 4px;
-    color: #fff;
-    margin: auto;
-    align-items: center;
-    text-align: center;
-    border: none;
-    font-size: 16px;
- width: 5rem;
- margin-top: 1.125rem;
-cursor: pointer; }
-    
-  
- .water{
-  width: 30%;
+ .speaker {
+    width: 36%;
     flex-direction: column;
     display: flex;
     position: relative;
      bottom: -10px;
-     margin-top: 0.2rem ;
-    padding-bottom: 33px;
-    margin-left:5rem;
-
+    padding-bottom: 25px;
  }
 
- .close-water-button{
-
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #555;
-  cursor: pointer;
-
- }
-
- .close-electric-button{
-  position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #555;
-    cursor: pointer;
+ #speaker-card {
+    left: 71.5%;
  }
