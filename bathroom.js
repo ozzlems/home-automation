@@ -289,7 +289,7 @@ doorSaveButton.onclick = function() {
 
 wifiSendButton.onclick = function() {
  wifiPopup.style.display = "none";
- localStorage.setItem("ba-wifiTime", wifiOffTimeInput.value + " - " + wifiOnTimeInput.value);
+ localStorage.setItem("ba-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
 }
 
 doorSendButton.onclick = function() {

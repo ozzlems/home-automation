@@ -28,7 +28,7 @@
     padding: 10px;
     position:absolute;
     text-emphasis: none;
-    left: 10%;
+    left: 10.2%;
     margin-top: 2rem;
     font-size:28px;
     font-weight: 400;
@@ -602,7 +602,7 @@
   top:31.8rem;
   position: absolute;
   background-color: #fffffff6; 
-  z-index: 999;
+  
   backdrop-filter: blur(5px);
   
 }
@@ -810,7 +810,7 @@
     padding: 10px;
     position:absolute;
     text-emphasis: none;
-    left: 10%;
+    left: 10.5%;
     margin-top: 19rem;
     font-size:28px;
     font-weight: 400;

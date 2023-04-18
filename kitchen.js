@@ -291,7 +291,7 @@ doorSaveButton.onclick = function() {
 wifiSendButton.onclick = function() {
   // Send wifi status to server
   wifiPopup.style.display = "none";
-  localStorage.setItem("k-wifiTime", wifiOffTimeInput.value + " - " + wifiOnTimeInput.value);
+  localStorage.setItem("k-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
 }
 
 doorSendButton.onclick = function() {

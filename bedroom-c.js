@@ -78,6 +78,9 @@ bright = 0;
 if(wifiOn == "ON"){
   wifiString = " - ";
 }
+speakerRoot.innerHTML += '<h4 style="color: red;">' + smartOn + '</h4>'
+speakerRoot.innerHTML += '<h4 style="color: red;">' + "Volume: " + smartLevel + '</h4>'
+
 
 tempRoot.innerHTML += '<h3 style="color: red;">' + temperature + '</h3>';
 wifiRoot.innerHTML +=  '<h4 style="color: red;">' + " Open Between : " + wifiString + '</h4>';
@@ -88,4 +91,5 @@ brightRoot.innerHTML += '<h3 style="color: red;">' + "Brightness is % " +  brigh
 doorRoot.innerHTML += '<h4 style="color: red;"' + " Open Between : " + doorString + '</h4>';
 doorRoot.innerHTML += '<h3 style="color: red;">' + doorOn + '</h3>'
 electricRoot.innerHTML += '<h3 style="color: red;">' +  electric + " kWh"+ '</h3>';
+colorCard.style.backgroundColor = color;
 brightRoot.innerHTML += '<h3 style="color: red;">' + lightOn + '</h3>';
