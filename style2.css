@@ -442,11 +442,13 @@
   
   .card-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  
+  .card-header  h3 {
+    text-align: center;
+  }
   .card-header i {
     font-size: 30px;
     margin-right: 10px;
@@ -459,6 +461,7 @@
   
   .card-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -469,6 +472,13 @@
     width: 60px;
     height: 34px;
     margin-top: 10px;
+  }
+  .card-btns {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-btns h3 {
+    margin:auto;
   }
   
   .switch input {

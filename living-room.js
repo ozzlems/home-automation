@@ -298,18 +298,21 @@ deleteBtnWifi.addEventListener('click', function() {
 deleteDoor.addEventListener('click', function() {
   this.closest('.card').remove();
 });
-
+wifiToggleSwitch.checked = localStorage.getItem("wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
   localStorage.setItem("wifiCheck", wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
-
+doorToggleSwitch.checked = localStorage.getItem("doorCheck") == "true" ? true : false;
 doorToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("doorCheck", doorToggleSwitch.checked);
   doorSet.disabled = doorToggleSwitch.checked;
 });
 lightSet.disabled = true;
+
+lightSlider.checked = localStorage.getItem("lightCheck") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
+  localStorage.setItem("lightCheck",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 

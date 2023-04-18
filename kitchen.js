@@ -86,7 +86,10 @@ waterClose.addEventListener("click", function() {
 
 waterSendButton.addEventListener("click", function() {
   const waterAmount = waterInput.value;
+  
+  localStorage.setItem("k-water",waterAmount);
   alert(`Water amount set to ${waterAmount}`);
+
   waterPopup.style.display = "none";
 });
 
@@ -288,6 +291,7 @@ doorSaveButton.onclick = function() {
 wifiSendButton.onclick = function() {
   // Send wifi status to server
   wifiPopup.style.display = "none";
+  localStorage.setItem("k-wifiTime", wifiOffTimeInput.value + " - " + wifiOnTimeInput.value);
 }
 
 doorSendButton.onclick = function() {
@@ -306,18 +310,22 @@ deleteBtnWifi.addEventListener('click', function() {
 deleteDoor.addEventListener('click', function() {
   this.closest('.card').remove();
 });
-
+wifiToggleSwitch.checked = localStorage.getItem("k-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("k-wifiCheck",wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
-
+doorToggleSwitch.checked = localStorage.getItem("k-doorCheck") == "true" ? true : false;
 doorToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("k-doorCheck",doorToggleSwitch.checked);
   doorSet.disabled = doorToggleSwitch.checked;
 });
 lightSet.disabled = true;
+
+
+lightSlider.checked = localStorage.getItem("k-lightSet") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
+  localStorage.setItem("k-lightSet",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 
@@ -348,6 +356,7 @@ sendButton.onclick = function() {
   }
   sendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("k-temperature",userInput);
 };
 
 function openPopup() {
@@ -442,6 +451,7 @@ lightSend.onclick = function() {
     alert("Please enter a valid number for humidity!");
     return;
   }
+  localStorage.setItem("k-bright",lightInput.value);
  lightSend.disabled = true;
   alert("User input: " + userInput);
 };
@@ -487,6 +497,7 @@ co2SetButton.addEventListener("click", function() {
   co2Popup.style.display = "block";
 });
 lightSet.addEventListener("click", function() {
+
   lightPopup.style.display = "block";
 });
 
