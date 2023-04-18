@@ -23,10 +23,20 @@
    letter-spacing: 1.4px;
        
   } 
+  .card-btns {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-btns h3 {
+    margin:auto;
+  }
 .height-up {
-  margin-top: -45px;
+  margin-top: -15px;
 }
-
+.whColor {
+  width: 32px;
+  height: 32px;
+}
   .general{
     color: white;
     padding: 10px;
@@ -446,7 +456,7 @@
   
   .card-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }

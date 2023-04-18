@@ -65,8 +65,12 @@ const speakerSend = document.getElementById("speaker-send-button");
 const deleteSpeaker = document.querySelector('#speaker-delete');
 const colorInput = document.getElementById("color-input");
 const speakerSwitch = document.getElementById("speaker-switch");
+const speakerSlider = document.getElementById("speaker-slider");
 
-
+speakerSlider.checked = localStorage.getItem("smartOn") == "true" ? true : false;
+speakerSlider.addEventListener("change", () => {
+  localStorage.setItem("smartOn", speakerSlider.checked);
+})
 
 speakerSave.disabled = true;
 speakerSend.disabled = true;
@@ -83,6 +87,7 @@ speakerSave.addEventListener("click", function() {
 
   speakerSend.addEventListener("click", function() {
     const volume = parseInt(speakerInput.value);
+    localStorage.setItem("smartLevel" , volume);
   alert("The volume you entered is: " + volume);
   });
   
@@ -144,6 +149,7 @@ electricSendButton.addEventListener("click", function() {
 
   // Hide the popup
   electricPopup.style.display = "none";
+  localStorage.setItem("be-electric",electricInput.value);
 });
 
 electricSendButton.addEventListener("click", function() {
@@ -363,11 +369,14 @@ doorSaveButton.onclick = function() {
 wifiSendButton.onclick = function() {
   // Send wifi status to server
   wifiPopup.style.display = "none";
+  localStorage.setItem("be-wifiTime", wifiOffTimeInput.value + " - " + wifiOnTimeInput.value);
 }
 
+
 doorSendButton.onclick = function() {
-  // Send wifi status to server
+ 
   doorPopup.style.display = "none";
+  localStorage.setItem("be-doorTime", doorOnTime.value + " - " + doorOffTime.value);
 }
 
 deleteBtnLight.addEventListener('click', function() {
@@ -385,23 +394,27 @@ deleteDoor.addEventListener('click', function() {
 deleteSpeaker.addEventListener('click', function() {
     this.closest('.card').remove();
   });
-
+  wifiToggleSwitch.checked = localStorage.getItem("be-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("be-wifiCheck", wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
 
+doorToggleSwitch.checked = localStorage.getItem("be-doorCheck") == "true" ? true : false;
 doorToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("be-doorCheck", doorToggleSwitch.checked);
   doorSet.disabled = doorToggleSwitch.checked;
 });
+
 lightSet.disabled = true;
+lightSlider.checked = localStorage.getItem("be-lightCheck") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
+  localStorage.setItem("be-lightCheck",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 
-speakerSwitch.addEventListener('change', function() {
-  
+colorInput.addEventListener('change', function(e) {
+    localStorage.setItem("colorBedroom", e.target.value);
     speakerSet.disabled = speakerSwitch.checked;
   });
 
@@ -469,6 +482,7 @@ humiditySendButton.onclick = function() {
   }
   humiditySendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("be-humidity",userInput);
 };
 
 humiditySetButton.addEventListener("click", function() {
@@ -529,6 +543,7 @@ lightSend.onclick = function() {
   }
  lightSend.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("be-bright",userInput);
 };
 
 lightInput.addEventListener("input", function() {
@@ -549,6 +564,7 @@ co2SendButton.onclick = function() {
   }
   co2SendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("be-co2",userInput);
 };
 
 

@@ -15,7 +15,7 @@
   }
 
   .height-up {
-    margin-top: -45px;
+    margin-top: -15px;
   }
   h1{
     color: white;
@@ -429,9 +429,17 @@
     font-size: 24px;
     margin: 0;
   }
-  
+  .card-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card-btns h3 {
+    margin:auto;
+  }
   .card-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -602,7 +610,7 @@
    padding-top: 2px ; 
   }
 #door-card{
-  margin-left: 81%;
+  margin-left: 80%;
   top:31.8rem;
   position: absolute;
   background-color: #fffffff6; 
@@ -831,11 +839,13 @@
       margin-bottom: 5%;
       margin-left: -28.5rem;
   }
-  .electricity {
+  .margin-b-1 {
     margin-bottom: 1rem;
   }
 
+
   .box-electric{
+    height: 215px;
     width: 28%;
      border-radius: 6px;
     padding: 20px;
@@ -846,14 +856,15 @@
     margin-left: 21rem;
   }
   .box-water{
+    height: 215px;
     width: 21%;
      border-radius: 6px;
     border: 1px solid black;
     text-align: center;
     background-color: #fff;
-    margin-bottom: 2rem;
+   
     margin-left: 45rem;
-    display: flex;
+  
     
   
   }
@@ -884,90 +895,83 @@
  }
 
 
- #water-popup .popup-content {
-    width: 400px;
-    height: 330px;
-    margin-top: 50px;
-    
-  }
-  #water-popup  .input-container {
-    margin-top: 1rem;
-  }
-  
-  #water-send-button {
-    margin-bottom: 2.5rem;
-    width: 6rem;
-    border: none;
-    background-color: #4c66c3;
-    color: #fff;
-    padding: 12px 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .general-water {
-    color: white;
-    padding: 10px;
-    position:absolute;
-    text-emphasis: none;
-    left: 35.8%;
-    margin-top: 19.2rem;
-    font-size:28px;
-    font-weight: 400;
-    letter-spacing: 1.3px;
-  }
-  
-
-  .container-water{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-    
-  }
-
  
-  #set-water-button {
-    background-color: #b81d1d;
-    border-radius: 4px;
-    color: #fff;
-    margin: auto;
-    align-items: center;
-    text-align: center;
-    border: none;
-    font-size: 16px;
- width: 5rem;
- margin-top: 1.125rem;
-cursor: pointer; }
-    
-  
- .water{
-  width: 30%;
-    flex-direction: column;
-    display: flex;
-    position: relative;
-     bottom: -10px;
-     margin-top: 0.2rem ;
-    padding-bottom: 33px;
-    margin-left:5rem;
 
- }
-
- .close-water-button{
-
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
+#water-send-button {
+  margin-bottom: 2.5rem;
+  width: 6rem;
+  border: none;
+  background-color: #4c66c3;
+  color: #fff;
+  padding: 12px 12px;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: bold;
-  color: #555;
   cursor: pointer;
+}
 
- }
+.general-water {
+  color: white;
+  padding: 10px;
+  position:absolute;
+  text-emphasis: none;
+  left: 35.8%;
+  margin-top: 19.2rem;
+  font-size:28px;
+  font-weight: 400;
+  letter-spacing: 1.3px;
+}
+
+
+.container-water{
+  position:absolute;
+    gap: 100px;
+    margin-top: 23.5rem;
+    padding: 10px;
+    margin-bottom: 10%;
+    margin-left: -28.5rem;
+
+  
+}
+
+
+#set-water-button {
+  background-color: #b81d1d;
+  border-radius: 4px;
+  color: #fff;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+width: 5rem;
+margin-top: 1.125rem;
+cursor: pointer; }
+  
+
+.water{
+width: 30%;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+   bottom: -10px;
+   margin-top: 0.2rem ;
+  padding-bottom: 33px;
+  margin-left:6rem;
+
+}
+
+.close-water-button{
+
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+font-weight: bold;
+color: #555;
+cursor: pointer;
+
+}
 
  .close-electric-button{
   position: absolute;

@@ -72,6 +72,7 @@ electricClose.addEventListener("click", function() {
 
 electricSendButton.addEventListener("click", function() {
   const electricAmount = electricInput.value;
+  localStorage.setItem("ba-electric",electricAmount);
   alert(`Electric amount set to ${electricAmount}`);
   electricPopup.style.display = "none";
 });
@@ -86,6 +87,7 @@ waterClose.addEventListener("click", function() {
 
 waterSendButton.addEventListener("click", function() {
   const waterAmount = waterInput.value;
+  localStorage.setItem("ba-water",waterAmount);
   alert(`Water amount set to ${waterAmount}`);
   waterPopup.style.display = "none";
 });
@@ -286,8 +288,8 @@ doorSaveButton.onclick = function() {
 
 
 wifiSendButton.onclick = function() {
-  // Send wifi status to server
-  wifiPopup.style.display = "none";
+ wifiPopup.style.display = "none";
+ localStorage.setItem("ba-wifiTime", wifiOffTimeInput.value + " - " + wifiOnTimeInput.value);
 }
 
 doorSendButton.onclick = function() {
@@ -307,17 +309,21 @@ deleteDoor.addEventListener('click', function() {
   this.closest('.card').remove();
 });
 
+wifiToggleSwitch.checked = localStorage.getItem("ba-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("ba-wifiCheck",wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
-
+doorToggleSwitch.checked = localStorage.getItem("ba-doorCheck") == "true" ? true : false;
 doorToggleSwitch.addEventListener('change', function() {
-  
+  localStorage.setItem("ba-doorCheck",doorToggleSwitch.checked);
   doorSet.disabled = doorToggleSwitch.checked;
 });
+
 lightSet.disabled = true;
+lightSlider.checked = localStorage.getItem("ba-lightSet") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
+  localStorage.setItem("ba-lightSet",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 
@@ -348,6 +354,7 @@ sendButton.onclick = function() {
   }
   sendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("ba-temperature",userInput);
 };
 
 function openPopup() {
@@ -383,6 +390,7 @@ humiditySendButton.onclick = function() {
   }
   humiditySendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("ba-humidity",humidityInput.value);
 };
 
 humiditySetButton.addEventListener("click", function() {
@@ -442,6 +450,7 @@ lightSend.onclick = function() {
     alert("Please enter a valid number for humidity!");
     return;
   }
+  localStorage.setItem("ba-bright",lightInput.value);
  lightSend.disabled = true;
   alert("User input: " + userInput);
 };
@@ -464,6 +473,7 @@ co2SendButton.onclick = function() {
   }
   co2SendButton.disabled = true;
   alert("User input: " + userInput);
+  localStorage.setItem("ba-co2",co2Input.value);
 };
 
 
