@@ -25,7 +25,7 @@ const lightSave = document.getElementById("light-save-button");
 const lightSend = document.getElementById("light-send-button");
 const deleteBtnLight = document.querySelector('#light-delete');
 const deleteBtnWifi = document.querySelector('#wifi-delete');
-const card = document.querySelector('.card');
+const box = document.querySelector('.box');
 
 const wifiSet = document.getElementById("wifi-set");
 const wifiPopup = document.getElementById("wifi-popup");
@@ -298,16 +298,18 @@ doorSendButton.onclick = function() {
 }
 
 deleteBtnLight.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteBtnWifi.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteDoor.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
+
+
 
 wifiToggleSwitch.checked = localStorage.getItem("ba-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {

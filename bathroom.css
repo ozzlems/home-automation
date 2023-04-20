@@ -9,7 +9,6 @@
       background: #1F1C2C;  /* fallback for old browsers */
       background: -webkit-linear-gradient(to left, #958eb5, #1F1C2C  );  /* Chrome 10-25, Safari 5.1-6 */
       background: linear-gradient(to left, #67647a, #1F1C2C  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      
          margin: 0;
       padding: 0;
   }
@@ -27,6 +26,8 @@
     color: white;
     padding: 10px;
     position:absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
     text-emphasis: none;
     left: 10.2%;
     margin-top: 2rem;
@@ -36,27 +37,39 @@
   }
   .container {
     display: flex;
-  justify-content: left;
+  justify-content: space-evenly;
   align-items: left;
   flex-wrap: wrap;
+  
     padding-right: 10%;
     padding-left: 10.6%;
-    gap: 100px;
-    margin-top: 8%;
+    margin-top: 8rem;
     margin-bottom: 1%;
     
   
   }
+  @media screen and (max-width: 600px) {
+    .box {
+      min-width: 100%;
+    }
+  }
   
   .box {
-    width: 20%;
+    margin: 10px;
      border-radius: 6px;
     padding: 20px;
    border: 1px solid black;
     text-align: center;
     background-color: #fff;
+    box-sizing: border-box;
+    width: 20%;
   }
   
+.consumption{
+ 
+}
+
+
   .box i {
     font-size: 40px;
     margin-bottom: 8px;
@@ -116,23 +129,6 @@
     background-color: #123d76;
   }
 
-  #modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-  }
   
   #set-btn {
     background-color: black;
@@ -222,8 +218,7 @@
   
   button {
   border: none;
-  
-    color: #fff;
+   color: #fff;
     padding: 10px 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -386,7 +381,7 @@
   
   .device-container {
     display: flex;
-    justify-content: left;
+     justify-content: space-between;
     align-items:center;
     flex-direction: column;
     height: 400px;
@@ -690,10 +685,10 @@
   .goBack {
     background-color: rgba(255, 255, 255, 0.885);
     display: flex;
-    margin-left:1rem;
+    margin-left:1.5rem;
     margin-top: -1.5rem;
     flex-direction: row;
-    width: 80px;
+    width: 6%;
     color:black;
     height: 40px;
     position:absolute;
@@ -806,65 +801,15 @@
     cursor: pointer;
   }
 
-  .general-electricity {
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    position:absolute;
-    text-emphasis: none;
-    left: 10.5%;
-    margin-top: 19rem;
-    font-size:28px;
-    font-weight: 400;
-    letter-spacing: 1.3px;
-  }
   
-
-  .container-electric{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-  }
+  
   .electricity {
     margin-bottom: 1rem;
   }
 
-  .box-electric{
-    width: 28%;
-     border-radius: 6px;
-    padding: 20px;
-   border: 1px solid black;
-    text-align: center;
-    background-color: #ffffff;
-    margin-bottom: 2rem;
-    margin-left: 21rem;
-  }
-  .box-water{
-    width: 21%;
-     border-radius: 6px;
-    padding: 20px;
-   border: 1px solid black;
-    text-align: center;
-    background-color: #fff;
-    margin-bottom: 2rem;
-    margin-left: 45rem;
   
-  }
-  #set-electric-button {
-    background-color: #b81d1d;
-    border-radius: 4px;
-    color: #ffffff;
-    margin: auto;
-    align-items: center;
-    text-align: center;
-    border: none;
-    font-size: 16px;
-    width: 5rem;
-    cursor: pointer !important; 
-    z-index: 900;
-  }
+  
+  
 
   
  .lightning{
@@ -908,23 +853,14 @@
     position:absolute;
     text-emphasis: none;
     left: 35.8%;
-    margin-top: 19.2rem;
+   
     font-size:28px;
     font-weight: 400;
     letter-spacing: 1.3px;
   }
   
 
-  .container-water{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-    
-  }
-
+  
  
   #set-water-button {
     background-color: #b81d1d;

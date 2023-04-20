@@ -42,13 +42,13 @@ if(doorOn == "ON"){
 }
 
 if(!temperature)
-temperature = 0;
+temperature = 25;
 
 if(!humidity){
-  humidity = 0;
+  humidity = 25;
 }
 if(!co2){
-  co2 = 0;
+  co2 = 25;
 }
 if(!bright){
   bright=0;
@@ -80,3 +80,4 @@ doorRoot.innerHTML += '<h4 style="color: red;"' + " Open Between : " + doorStrin
 doorRoot.innerHTML += '<h3 style="color: red;">' + doorOn + '</h3>'
 electricRoot.innerHTML += '<h3 style="color: red;">' +  electric + " kWh"+ '</h3>';
 brightRoot.innerHTML += '<h3 style="color: red;">' + lightOn + '</h3>';
+waterRoot.innerHTML += '<h3 style="color: red;">' + water+ " m³ "  + '</h3>';
