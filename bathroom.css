@@ -37,18 +37,18 @@
   }
   .container {
     display: flex;
-  justify-content: space-evenly;
+  justify-content: left;
   align-items: left;
   flex-wrap: wrap;
-  
+    gap: 100px;
     padding-right: 10%;
     padding-left: 10.6%;
-    margin-top: 8rem;
+    margin-top: 7rem;
     margin-bottom: 1%;
     
   
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 850px) {
     .box {
       min-width: 100%;
     }
@@ -688,7 +688,7 @@
     margin-left:1.5rem;
     margin-top: -1.5rem;
     flex-direction: row;
-    width: 6%;
+   
     color:black;
     height: 40px;
     position:absolute;
