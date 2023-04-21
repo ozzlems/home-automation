@@ -25,7 +25,7 @@ const lightSave = document.getElementById("light-save-button");
 const lightSend = document.getElementById("light-send-button");
 const deleteBtnLight = document.querySelector('#light-delete');
 const deleteBtnWifi = document.querySelector('#wifi-delete');
-const card = document.querySelector('.card');
+const box = document.querySelector('.box');
 
 const wifiSet = document.getElementById("wifi-set");
 const wifiPopup = document.getElementById("wifi-popup");
@@ -40,8 +40,6 @@ const lightSlider = document.getElementById("light-slider");
 const deleteDoor = document.querySelector('#door-delete');
 const doorPopup = document.getElementById("door-popup");
 const closeDoorPopupButton = document.getElementById("close-door-popup-button");
-
-
 const doorSet = document.getElementById("door-set");
 const doorToggleSwitch = document.getElementById("door-toggle-switch");
 const doorOnTime = document.getElementById("door-on-time");
@@ -49,45 +47,45 @@ const doorOffTime = document.getElementById("door-off-time");
 const doorSaveButton = document.getElementById("door-save-button");
 const doorSendButton = document.getElementById("door-send-button");
 
-
 const electricPopup = document.getElementById("electric-popup");
 const electricClose = document.getElementById("close-electric-popup-button");
 const electricSetButton = document.getElementById("set-electric-button");
 const electricInput = document.getElementById("electric-input");
 const electricSendButton = document.getElementById("electric-send-button");
 
-console.log(localStorage.getItem("temperature") + " is temperature  ");
+const deleteTV = document.querySelector('#tv-delete');
+const TVPopup = document.getElementById("tv-popup");
+const closeTVPopupButton = document.getElementById("close-tv");
+const TVSet = document.getElementById("tv-set");
+const TVToggleSwitch = document.getElementById("tv-switch");
+const TVOnTime = document.getElementById("tv-on-time");
+const TVOffTime = document.getElementById("tv-off-time");
+const TVSaveButton = document.getElementById("tv-save");
+const TVSendButton = document.getElementById("tv-send");
+
+
+
+
 
 electricSetButton.addEventListener("click", function() {
   electricPopup.style.display = "block";
+ 
 });
 
 electricClose.addEventListener("click", function() {
   electricPopup.style.display = "none";
 });
 
-
 electricSendButton.addEventListener("click", function() {
-  // Get the user input from the input field
   const electricAmount = electricInput.value;
-
-  // Do something with the electric amount, such as send it to a server
-  console.log(`Sending electric amount of ${electricAmount}`);
- 
-  // Hide the popup
+  localStorage.setItem("ba-electric",electricAmount);
+  alert(`Electric amount set to ${electricAmount}`);
   electricPopup.style.display = "none";
-  localStorage.setItem("electric",electricInput.value);
- 
 });
 
 
-console.log(lightSet);
-console.log(wifiSet);
 
 let intervalId;
-
-
-
 
 function startWifiTimer(onTime, offTime) {
   clearInterval(intervalId);
@@ -194,7 +192,7 @@ window.onclick = function(event) {
   }
 }
 
-
+wifiSendButton.disabled = true;
 wifiSaveButton.onclick = function() {
   const wifiOnTime = wifiOnTimeInput.value;
   const wifiOffTime = wifiOffTimeInput.value;
@@ -224,15 +222,15 @@ wifiSaveButton.onclick = function() {
     
     const now = new Date();
     const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
-    
+    alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
+    if(wifiSaveButton.checked = true){
     setTimeout(function() {
-      alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
-      wifiSendButton.disabled = false;
+     wifiSendButton.disabled = false;
     }, remainingSeconds * 1000);
   
   wifiSendButton.disabled = false;
 }
-
+doorSendButton.disabled = true; }
 
 doorSaveButton.onclick = function() {
   const DoorOnTime = doorOnTime.value;
@@ -240,8 +238,7 @@ doorSaveButton.onclick = function() {
   
   if (doorToggleSwitch.checked) {
     alert("Lock is already on!");
-    return;
-   }
+    return; }
     else{
     const offTime = new Date();
     offTime.setHours(parseInt(DoorOffTime.split(":")[0]));
@@ -264,55 +261,62 @@ doorSaveButton.onclick = function() {
     
     const now = new Date();
     const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
-    
+   
+   
+    if(isNaN(doorOnTime.value) ||isNaN(doorOnTime.value) ) {
     setTimeout(function() {
+      
       alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
       doorSendButton.disabled = false;
-    }, remainingSeconds * 1000);
+    }, remainingSeconds * 1000); 
+    doorSendButton.disabled = false;}
+    else{
+      doorSaveButton.disabled = true;
+      doorSendButton.disabled = true;
+    }
   
-  doorSendButton.disabled = false;
 }
 
 
 wifiSendButton.onclick = function() {
-  // Send wifi status to server
-  wifiPopup.style.display = "none";
-  console.log("a");
-  localStorage.setItem("wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
+ wifiPopup.style.display = "none";
+ localStorage.setItem("ba-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
 }
 
 doorSendButton.onclick = function() {
-  // Send wifi status to server
+  localStorage.setItem("ba-doorTime", doorOnTime.value + " - " + doorOnTime.value);
   doorPopup.style.display = "none";
-  localStorage.setItem("doorTime", doorOnTime.value + " - " + doorOffTime.value);
 }
 
 deleteBtnLight.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteBtnWifi.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteDoor.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
-wifiToggleSwitch.checked = localStorage.getItem("wifiCheck") == "true" ? true : false;
+
+
+
+wifiToggleSwitch.checked = localStorage.getItem("ba-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
-  localStorage.setItem("wifiCheck", wifiToggleSwitch.checked);
+  localStorage.setItem("ba-wifiCheck",wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
-doorToggleSwitch.checked = localStorage.getItem("doorCheck") == "true" ? true : false;
+doorToggleSwitch.checked = localStorage.getItem("ba-doorCheck") == "true" ? true : false;
 doorToggleSwitch.addEventListener('change', function() {
-  localStorage.setItem("doorCheck", doorToggleSwitch.checked);
+  localStorage.setItem("ba-doorCheck",doorToggleSwitch.checked);
   doorSet.disabled = doorToggleSwitch.checked;
 });
-lightSet.disabled = true;
 
-lightSlider.checked = localStorage.getItem("lightCheck") == "true" ? true : false;
+lightSet.disabled = true;
+lightSlider.checked = localStorage.getItem("ba-lightSet") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
-  localStorage.setItem("lightCheck",lightSlider.checked);
+  localStorage.setItem("ba-lightSet",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 
@@ -343,7 +347,7 @@ sendButton.onclick = function() {
   }
   sendButton.disabled = true;
   alert("User input: " + userInput);
-  localStorage.setItem("temperature",userInput);
+  localStorage.setItem("ba-temperature",userInput);
 };
 
 function openPopup() {
@@ -379,7 +383,7 @@ humiditySendButton.onclick = function() {
   }
   humiditySendButton.disabled = true;
   alert("User input: " + userInput);
-  localStorage.setItem("humidity",userInput);
+  localStorage.setItem("ba-humidity",humidityInput.value);
 };
 
 humiditySetButton.addEventListener("click", function() {
@@ -439,9 +443,9 @@ lightSend.onclick = function() {
     alert("Please enter a valid number for humidity!");
     return;
   }
+  localStorage.setItem("ba-bright",lightInput.value);
  lightSend.disabled = true;
   alert("User input: " + userInput);
-  localStorage.setItem("bright",userInput);
 };
 
 lightInput.addEventListener("input", function() {
@@ -462,7 +466,7 @@ co2SendButton.onclick = function() {
   }
   co2SendButton.disabled = true;
   alert("User input: " + userInput);
-  localStorage.setItem("co2",userInput);
+  localStorage.setItem("ba-co2",co2Input.value);
 };
 
 
@@ -526,4 +530,21 @@ window.onclick = function(event) {
 }
 
 
+function openTVPopup() {
+  TVPopup.style.display = "block";
+}
+closeTVPopupButton.addEventListener("click", function() {
+ TVPopup.style.display = "none";
+ });
+ 
+ TVSet.addEventListener("click", function() {
+  TVPopup.style.display = "block";
+});
 
+lightInput.addEventListener("input", function() {
+  if (lightInput.value !== "" ||lightInput.value < 0) {
+   lightSave.disabled = false; 
+  } else {
+    lightSave.disabled = true;
+  }
+});

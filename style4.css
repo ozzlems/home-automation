@@ -1,4 +1,7 @@
-*{
+
+   
+
+  *{
     margin : 0;
     padding : 0;
     box-sizing: border-box;  
@@ -7,9 +10,8 @@
   body{
       font-family: 'Ubuntu', sans-serif;
       background: #1F1C2C;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to left, #958db9, #1F1C2C  );  /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(to left, #958eb5, #1F1C2C  );  /* Chrome 10-25, Safari 5.1-6 */
       background: linear-gradient(to left, #67647a, #1F1C2C  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      
          margin: 0;
       padding: 0;
   }
@@ -18,6 +20,7 @@
     text-align: center;
     text-emphasis: none;
     margin-top: 3rem;
+   padding-bottom: 2rem;
     font-size:38px;
     justify-content: center;
    letter-spacing: 1.4px;
@@ -27,8 +30,10 @@
     color: white;
     padding: 10px;
     position:absolute;
+    flex-direction: row;
+    flex-wrap: wrap;
     text-emphasis: none;
-    left: 10%;
+    left: 10.2%;
     margin-top: 2rem;
     font-size:28px;
     font-weight: 400;
@@ -39,23 +44,32 @@
   justify-content: left;
   align-items: left;
   flex-wrap: wrap;
+    gap:50px;
     padding-right: 10%;
     padding-left: 10.6%;
-    gap: 100px;
-    margin-top: 8%;
-    margin-bottom: 1%;
+    margin-top: 7rem;
+    
     
   
   }
+  @media screen and (max-width: 800px) {
+    .box {
+      min-width: 100%;
+    }
+  }
   
   .box {
-    width: 20%;
+    margin: 10px;
      border-radius: 6px;
     padding: 20px;
    border: 1px solid black;
     text-align: center;
     background-color: #fff;
+    box-sizing: border-box;
+    width: 20%;
+  
   }
+  
   
   .box i {
     font-size: 40px;
@@ -110,29 +124,12 @@
     background-color: #741414;
    
   }
-
+  
   .send-button:hover{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 30px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-color: #123d76;
   }
-
-  #modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-  }
   
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-  }
   
   #set-btn {
     background-color: black;
@@ -156,7 +153,7 @@
   backdrop-filter: blur(5px);
   z-index: 999;
   
-
+  
   }
   .popup-content {
     position: relative;
@@ -177,15 +174,6 @@
   }
   
   .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #555;
-    cursor: pointer;
-  }
-  .close-electric-button{
     position: absolute;
     top: 10px;
     right: 10px;
@@ -231,8 +219,7 @@
   
   button {
   border: none;
-  
-    color: #fff;
+   color: #fff;
     padding: 10px 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -252,7 +239,7 @@
     cursor: pointer;
      
   }
-
+  
   #send-button{
     border: none;
     background-color: #4c66c3;
@@ -269,7 +256,7 @@
     background-color: #ccc;
     cursor: default;
   }
-
+  
   #humidity-save-button{
     background-color: #3c903f;
     border: none;
@@ -283,7 +270,7 @@
     cursor: pointer;
      
   }
-
+  
   #humidity-send-button{
     border: none;
     background-color: #4c66c3;
@@ -310,28 +297,6 @@
   
     
   }
-  #electric-popup .popup-content {
-    width: 400px;
-    height: 280px;
-    margin-top: 50px;
-    
-  }
-  #electric-popup  .input-container {
-    margin-top: 1rem;
-  }
-  
-  #electric-send-button {
-    margin-bottom: 1.5rem;
-    width: 6rem;
-    border: none;
-    background-color: #4c66c3;
-    color: #fff;
-    padding: 12px 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
   
   #humidity-popup .input-container {
     margin-top: 30px;
@@ -341,7 +306,7 @@
     margin-top: 20px;
   }
   
-
+  
   #co2-save-button{
     background-color:#3c903f;
     border: none;
@@ -355,7 +320,7 @@
     cursor: pointer;
      
   }
-
+  
   #co2-send-button{
     border: none;
     background-color: #4c66c3;
@@ -417,11 +382,11 @@
   
   .device-container {
     display: flex;
-    justify-content: left;
+     justify-content: space-between;
     align-items:center;
     flex-direction: column;
     height: 400px;
- margin-left: -61rem;
+  margin-left: -60rem;
     margin-top: 8rem;
   }
   
@@ -502,7 +467,7 @@
     transition: .4s;
     border-radius: 50%;
   }
-
+  
   
   input:checked + .slider {
     background-color: #038f26;
@@ -542,7 +507,7 @@
     cursor: pointer;
     
   }
-
+  
   .btn-set{
     background-color: #b81d1d;
     border-radius: 4px;
@@ -559,7 +524,7 @@
     cursor: pointer;
     
   }
-
+  
   .btn-delete:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 30px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-color: #090989;
@@ -569,7 +534,7 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 30px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-color: #741414;
   }
-
+  
   #light-save-button{
     background-color:#3c903f;
     border: none;
@@ -583,7 +548,7 @@
     cursor: pointer;
      
   }
-
+  
   #light-send-button{
     border: none;
     background-color: #4c66c3;
@@ -624,18 +589,20 @@
     top:31.8rem;
     position: absolute;
     background-color: #fffffff6; }
-
+  
   #wifi-buttons{
    padding-top: 2px ; 
   }
-#door-card{
+  #door-card{
   margin-left: 81%;
   top:31.8rem;
-   position: absolute;
+  position: absolute;
   background-color: #fffffff6; 
+  z-index: 999;
+  backdrop-filter: blur(5px);
   
-}
-
+  }
+  
   .wifi-popup-timer {
     display: flex;
     flex-direction: column;
@@ -650,7 +617,7 @@
   .timer-inputs label {
     font-weight: bold;
   }
-   
+  
   
   
   .timer-inputs input[type="number"],
@@ -693,7 +660,7 @@
     margin-top: 10px;
   }
   
-
+  
   .popup-content input[type="time"] {
     width: 80px;
     padding: 5px;
@@ -702,7 +669,7 @@
     border: 1px solid #ccc;
     font-size: 16px;
   }
-
+  
   #wifi-save-button {
     background-color:#3c903f;
     border: none;
@@ -715,14 +682,14 @@
     font-weight: bold;
     cursor: pointer;
   }
-
+  
   .goBack {
     background-color: rgba(255, 255, 255, 0.885);
     display: flex;
-    margin-left:1rem;
+    margin-left:1.5rem;
     margin-top: -1.5rem;
     flex-direction: row;
-    width: 80px;
+   
     color:black;
     height: 40px;
     position:absolute;
@@ -730,7 +697,7 @@
     cursor:pointer;
     text-decoration: none;
   }
-
+  
   .goBack > p {
     margin:auto;
     margin-right:1rem;
@@ -761,7 +728,7 @@
     background-color: #bbbbbb;
     cursor: default;
    }
-
+  
   .input-container input[type="time"] {
     width: 85%;
     padding: 5px 10px;
@@ -769,7 +736,6 @@
     box-sizing: border-box;
     border: 2px solid black;
   }
-  
   #set-light-button:disabled {
     background-color: #bbbbbb;
     cursor: default;
@@ -778,12 +744,12 @@
     background-color: #bbbbbb;
     cursor: default;
   }
-
+  
   #set-door-button:disabled{
     background-color: #bbbbbb;
     cursor: default;
   }
-
+  
   #door-save-button {
     background-color:#3c903f;
     border: none;
@@ -796,7 +762,7 @@
     font-weight: bold;
     cursor: pointer;
   }
-
+  
   #door-send-button {
     border: none;
     background-color: #4c66c3;
@@ -811,46 +777,93 @@
     background-color: #bbbbbb;
     cursor: default;
   }
-
-
-   
-
-  .general-electricity {
+  
+  
+  #electric-popup .popup-content {
+    width: 400px;
+    height: 330px;
+    margin-top: 50px;
+    
+  }
+  #electric-popup  .input-container {
+    margin-top: 1rem;
+  }
+  
+  #electric-send-button {
+    margin-bottom: 1.5rem;
+    width: 6rem;
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 12px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  
+  
+  .electricity {
+    margin-bottom: 1rem;
+  }
+  
+  
+  
+  
+  
+  
+  .lightning{
+  width: 38%;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+     bottom: -10px;
+    padding-bottom: 20px;
+    margin-left: 4.5rem;
+  
+  }
+  
+  
+  #water-popup .popup-content {
+    width: 400px;
+    height: 330px;
+    margin-top: 50px;
+    
+  }
+  #water-popup  .input-container {
+    margin-top: 1rem;
+  }
+  
+  #water-send-button {
+    margin-bottom: 2.5rem;
+    width: 6rem;
+    border: none;
+    background-color: #4c66c3;
+    color: #fff;
+    padding: 12px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .general-water {
     color: white;
     padding: 10px;
     position:absolute;
     text-emphasis: none;
-    left: 10%;
-    margin-top: 19rem;
+    left: 35.8%;
+   
     font-size:28px;
     font-weight: 400;
     letter-spacing: 1.3px;
   }
   
-
-  .container-electric{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-  }
-  .electricity {
-    margin-bottom: 1rem;
-  }
-
-  .box-electric{
-    width: 28%;
-     border-radius: 6px;
-    padding: 20px;
-   border: 1px solid black;
-    text-align: center;
-    background-color: #fff;
-    margin-bottom: 2rem;
-    margin-left: 21rem;
-  }
-  #set-electric-button {
+  
+  
+  
+  #set-water-button {
     background-color: #b81d1d;
     border-radius: 4px;
     color: #fff;
@@ -859,21 +872,50 @@
     text-align: center;
     border: none;
     font-size: 16px;
-   
-    width: 5rem;
-    cursor: pointer; }
+  width: 5rem;
+  margin-top: 1.125rem;
+  cursor: pointer; }
     
   
- .lightning{
-  width: 38%;
+  .water{
+  width: 30%;
     flex-direction: column;
     display: flex;
     position: relative;
      bottom: -10px;
-    padding-bottom: 20px;
-    margin-left: 4.5rem;
-
- }
+     margin-top: 0.2rem ;
+    padding-bottom: 33px;
+    margin-left:5rem;
+  
+  }
+  
+  .close-water-button{
+  
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  
+  }
+  
+  .close-electric-button{
+  position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  
+  
+  
+  
+  
 
  .speaker {
     width: 36%;
@@ -939,30 +981,12 @@
     background-color: #bbbbbb;
     cursor: default;
    }
- 
-  .container-speaker{
-    position:absolute;
-      gap: 100px;
-      margin-top: 23.5rem;
-      padding: 10px;
-      margin-bottom: 5%;
-      margin-left: -28.5rem;
-    
-  }
+    #set-speaker-button:disabled {
+      background-color: #bbbbbb;
+      cursor: default;
+    }
   
-  
-  #set-speaker-button {
-    background-color: #b81d1d;
-    border-radius: 4px;
-    color: #fff;
-    margin: auto;
-    align-items: center;
-    text-align: center;
-    border: none;
-    font-size: 16px;
-  width: 5rem;
-  margin-top: 1.125rem;
-  cursor: pointer; }
+
     
   
   

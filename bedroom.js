@@ -25,7 +25,7 @@ const lightSave = document.getElementById("light-save-button");
 const lightSend = document.getElementById("light-send-button");
 const deleteBtnLight = document.querySelector('#light-delete');
 const deleteBtnWifi = document.querySelector('#wifi-delete');
-const card = document.querySelector('.card');
+
 
 const wifiSet = document.getElementById("wifi-set");
 const wifiPopup = document.getElementById("wifi-popup");
@@ -67,9 +67,12 @@ const colorInput = document.getElementById("color-input");
 const speakerSwitch = document.getElementById("speaker-switch");
 const speakerSlider = document.getElementById("speaker-slider");
 
+
+
 speakerSlider.checked = localStorage.getItem("smartOn") == "true" ? true : false;
 speakerSlider.addEventListener("change", () => {
   localStorage.setItem("smartOn", speakerSlider.checked);
+  speakerSet.disabled = !speakerSlider.checked;
 })
 
 speakerSave.disabled = true;
@@ -130,7 +133,6 @@ speakerSave.addEventListener("click", function() {
   
 
 
-console.log(localStorage.getItem("temperature") + " is temperature  ");
 
 electricSetButton.addEventListener("click", function() {
   electricPopup.style.display = "block";
@@ -163,9 +165,6 @@ electricSendButton.addEventListener("click", function() {
   electricPopup.style.display = "none";
 });
 
-
-console.log(lightSet);
-console.log(wifiSet);
 
 let intervalId;
 
@@ -373,6 +372,9 @@ wifiSendButton.onclick = function() {
 }
 
 
+
+
+
 doorSendButton.onclick = function() {
  
   doorPopup.style.display = "none";
@@ -380,19 +382,19 @@ doorSendButton.onclick = function() {
 }
 
 deleteBtnLight.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteBtnWifi.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteDoor.addEventListener('click', function() {
-  this.closest('.card').remove();
+  this.closest('.box').remove();
 });
 
 deleteSpeaker.addEventListener('click', function() {
-    this.closest('.card').remove();
+    this.closest('.box').remove();
   });
   wifiToggleSwitch.checked = localStorage.getItem("be-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
@@ -413,9 +415,11 @@ lightSlider.addEventListener('change', function() {
   lightSet.disabled = !lightSlider.checked;
 });
 
+
+
+
 colorInput.addEventListener('change', function(e) {
     localStorage.setItem("colorBedroom", e.target.value);
-    speakerSet.disabled = speakerSwitch.checked;
   });
 
 

@@ -1,20 +1,20 @@
 const tempRoot = document.getElementById("tempRoot");
-const wifiRoot = document.getElementById("wifi-buttons");
-const doorRoot = document.getElementById("door-buttons")
+const wifiRoot = document.getElementById("wifiRoot");
+const doorRoot = document.getElementById("doorRoot")
 const humRoot = document.getElementById("humRoot");
 const co2Root = document.getElementById("co2Root");
 const brightRoot = document.getElementById("brightRoot");
 const electricRoot = document.getElementById("electricRoot");
-var temperature = localStorage.getItem("temperature");
-var wifiString = localStorage.getItem("wifiTime");
-var doorString = localStorage.getItem("doorTime");
-var humidity = localStorage.getItem("humidity");
-var co2 = localStorage.getItem("co2");
-var wifiOn = localStorage.getItem("wifiCheck");
-var bright = localStorage.getItem("bright");
-var electric = localStorage.getItem("electric");
-var doorOn = localStorage.getItem("doorCheck");
-var lightOn = localStorage.getItem("lightCheck");
+var temperature = localStorage.getItem("ba-temperature");
+var wifiString = localStorage.getItem("ba-wifiTime");
+var doorString = localStorage.getItem("ba-doorTime");
+var humidity = localStorage.getItem("ba-humidity");
+var co2 = localStorage.getItem("ba-co2");
+var wifiOn = localStorage.getItem("ba-wifiCheck");
+var bright = localStorage.getItem("ba-bright");
+var electric = localStorage.getItem("ba-electric");
+var doorOn = localStorage.getItem("ba-doorCheck");
+var lightOn = localStorage.getItem("ba-lightSet");
 
 
 if(doorOn == "true")
@@ -66,12 +66,12 @@ if(wifiOn == "ON"){
 }
 
 tempRoot.innerHTML += '<h3 style="color: red;">' + temperature + '</h3>';
-wifiRoot.innerHTML +=  '<h4 style="color: red;">' + " Open Between : " + wifiString + '</h4>';
+wifiOn == "ON" ? wifiRoot.innerHTML +=  '<h4 style="color: red;">' + " Open Between : " + wifiString + '</h4>' : 0;
 humRoot.innerHTML += '<h3 style="color: red;">' + humidity + '</h3>';
 co2Root.innerHTML += '<h3 style="color: red;">' + co2 + '</h3>';
 wifiRoot.innerHTML +=  '<h3 style="color: red;">' + wifiOn + '</h3>';
 brightRoot.innerHTML += '<h3 style="color: red;">' + "Brightness is % " +  bright + '</h3>';
-doorRoot.innerHTML += '<h4 style="color: red;"' + " Open Between : " + doorString + '</h4>';
+brightRoot.innerHTML += '<h3 style="color: red;">' + lightOn + '</h3>';
+doorOn == "ON" ? doorRoot.innerHTML += '<h4 style="color: red;">'   + " Open Between : " + doorString + '</h4>' : 0;
 doorRoot.innerHTML += '<h3 style="color: red;">' + doorOn + '</h3>'
 electricRoot.innerHTML += '<h3 style="color: red;">' +  electric + " kWh"+ '</h3>';
-brightRoot.innerHTML += '<h3 style="color: red;">' + lightOn + '</h3>';
