@@ -182,12 +182,17 @@ z-index: 999;
 
 .input-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 10px;
   align-items: center;
   
   
 }
+.input-container label {
+  margin-bottom: 10px;
+}
+
 .input-field {
   border: 1px solid #000000;
   border-radius: 3px;
@@ -423,7 +428,7 @@ margin-left: -60rem;
 
 #tv-popup .popup-content {
   width: 400px;
-  height: 300px;
+
   margin-top: 20px;
 
   
