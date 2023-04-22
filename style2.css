@@ -86,6 +86,7 @@ flex-wrap: wrap;
 .button-container {
   display: flex;
   justify-content: space-between;
+
 }
 
 .set-button {
@@ -193,10 +194,21 @@ z-index: 999;
   margin-bottom: 10px;
 }
 
+#min::placeholder {
+  color: rgb(65, 65, 65);
+  font-weight: bold;
+}
+
+#max::placeholder {
+  color: rgb(65, 65, 65);
+  font-weight: bold;
+}
+
 .input-field {
   border: 1px solid #000000;
   border-radius: 3px;
-  padding: 5px;
+  padding: 6px;
+  align-self: center;
   font-size: 16px;
 display: flex;
   
@@ -219,6 +231,7 @@ input[type="number"] {
   margin-right: 10px;
 }
 
+
 button {
 border: none;
  color: #fff;
@@ -232,9 +245,8 @@ border: none;
   background-color:#3c903f;
   border: none;
   color: #fff;
-  padding: 10px 12px;
+  padding: 10px 10px;
  margin-right: 1rem;
-  margin-left: 1rem;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
@@ -358,30 +370,6 @@ border: none;
   margin-top: 20px;
 }
 
- .light {
-  width: 50%;
-  flex-direction: column;
-  display: flex;
-  margin-top: -2px;
- }
- .wifi{
-  width: 38%;
-  flex-direction: column;
-  display: flex;
-  position: relative;
-   bottom: -10px;
-  padding-bottom: 20px;
-
- }
- .door{
-  width: 38%;
-  flex-direction: column;
-  display: flex;
-  position: relative;
-   bottom: -10px;
-  padding-bottom: 20px;
- }
-
 .device-container {
   display: flex;
    justify-content: space-between;
@@ -393,7 +381,7 @@ margin-left: -60rem;
 }
 
 
-#tv-save{
+#tv-save-button{
   background-color: #3c903f;
   border: none;
   color: #fff;
@@ -407,7 +395,7 @@ margin-left: -60rem;
    
 }
 
-#tv-send{
+#tv-send-button{
   border: none;
   background-color: #4c66c3;
   color: #fff;
@@ -420,7 +408,11 @@ margin-left: -60rem;
  
 }
 
-#tv-send:disabled {
+#tv-send-button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+#tv-set:disabled{
   background-color: #ccc;
   cursor: default;
 }
@@ -610,15 +602,6 @@ input:checked + .slider:before {
 #wifi-buttons{
  padding-top: 2px ; 
 }
-#door-card{
-margin-left: 81%;
-top:31.8rem;
-position: absolute;
-background-color: #fffffff6; 
-z-index: 999;
-backdrop-filter: blur(5px);
-
-}
 
 .wifi-popup-timer {
   display: flex;
@@ -748,7 +731,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .input-container input[type="time"] {
   width: 85%;
-  padding: 5px 10px;
+  padding: 0px 5px;
   margin: 5px 0;
   box-sizing: border-box;
   border: 2px solid black;
@@ -841,82 +824,6 @@ width: 38%;
 
 }
 
-
-#water-popup .popup-content {
-  width: 400px;
-  height: 330px;
-  margin-top: 50px;
-  
-}
-#water-popup  .input-container {
-  margin-top: 1rem;
-}
-
-#water-send-button {
-  margin-bottom: 2.5rem;
-  width: 6rem;
-  border: none;
-  background-color: #4c66c3;
-  color: #fff;
-  padding: 12px 12px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.general-water {
-  color: white;
-  padding: 10px;
-  position:absolute;
-  text-emphasis: none;
-  left: 35.8%;
- 
-  font-size:28px;
-  font-weight: 400;
-  letter-spacing: 1.3px;
-}
-
-
-
-
-#set-water-button {
-  background-color: #b81d1d;
-  border-radius: 4px;
-  color: #fff;
-  margin: auto;
-  align-items: center;
-  text-align: center;
-  border: none;
-  font-size: 16px;
-width: 5rem;
-margin-top: 1.125rem;
-cursor: pointer; }
-  
-
-.water{
-width: 30%;
-  flex-direction: column;
-  display: flex;
-  position: relative;
-   bottom: -10px;
-   margin-top: 0.2rem ;
-  padding-bottom: 33px;
-  margin-left:5rem;
-
-}
-
-.close-water-button{
-
-position: absolute;
-top: 10px;
-right: 10px;
-font-size: 24px;
-font-weight: bold;
-color: #555;
-cursor: pointer;
-
-}
 
 .close-electric-button{
 position: absolute;

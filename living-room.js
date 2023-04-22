@@ -58,10 +58,40 @@ const TVPopup = document.getElementById("tv-popup");
 const closeTVPopupButton = document.getElementById("close-tv");
 const TVSet = document.getElementById("tv-set");
 const TVToggleSwitch = document.getElementById("tv-switch");
-const TVOnTime = document.getElementById("tv-on-time");
-const TVOffTime = document.getElementById("tv-off-time");
-const TVSaveButton = document.getElementById("tv-save");
-const TVSendButton = document.getElementById("tv-send");
+const TVNumber = document.getElementById("tv-number");
+const TVVolume = document.getElementById("tv-volume");
+const TVSaveButton = document.getElementById("tv-save-button");
+const TVSendButton = document.getElementById("tv-send-button");
+
+
+TVSendButton.disabled = true;
+TVSaveButton.onclick = function() {
+  if(TVNumber.value < 1 || TVNumber.value > 250){
+    alert("Please enter valid number. ");
+    return;
+  }
+ else if(TVVolume.value < 0 || TVVolume.value > 100){
+    alert("Please enter valid number.");
+    return;
+  }
+   else if(isNaN(TVNumber.value) && isNaN(TVVolume.value)){
+    alert("Please enter a valid number. ");
+    return;
+  }
+  
+ TVSaveButton.disabled = false;
+ TVSendButton.disabled = false;
+};
+
+
+TVSendButton.addEventListener("click", () => {
+    
+  alert("Channel input : " + TVNumber.value +  " Volume input : "  + TVVolume.value );
+  localStorage.setItem("ba-tv1",TVVolume.value);
+  localStorage.setItem("ba-tv2",TVNumber.value); 
+});
+
+
 
 
 
@@ -93,7 +123,8 @@ function startWifiTimer(onTime, offTime) {
   const now = new Date();
   const onTimeParts = onTime.split(":");
   const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
-  const offTimeParts = offTime.split(":");wifiToggleSwitch.onchange = function() {
+  const offTimeParts = offTime.split(":");
+  wifiToggleSwitch.onchange = function() {
     wifiSendButton.disabled = true;
   }
   const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
@@ -177,6 +208,9 @@ closeDoorPopupButton.onclick = function() {
   doorPopup.style.display = "none";
 }
 
+closeTVPopupButton.onclick = function() {
+  TVPopup.style.display = "none";
+}
 
 window.onclick = function(event) {
   if (event.target == doorPopup) {
@@ -222,7 +256,7 @@ wifiSaveButton.onclick = function() {
     
     const now = new Date();
     const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
-    alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
+
     if(wifiSaveButton.checked = true){
     setTimeout(function() {
      wifiSendButton.disabled = false;
@@ -265,8 +299,7 @@ doorSaveButton.onclick = function() {
    
     if(isNaN(doorOnTime.value) ||isNaN(doorOnTime.value) ) {
     setTimeout(function() {
-      
-      alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
+     
       doorSendButton.disabled = false;
     }, remainingSeconds * 1000); 
     doorSendButton.disabled = false;}
@@ -279,11 +312,14 @@ doorSaveButton.onclick = function() {
 
 
 wifiSendButton.onclick = function() {
+  alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
  wifiPopup.style.display = "none";
  localStorage.setItem("ba-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
 }
 
 doorSendButton.onclick = function() {
+   
+  alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
   localStorage.setItem("ba-doorTime", doorOnTime.value + " - " + doorOnTime.value);
   doorPopup.style.display = "none";
 }
@@ -299,6 +335,10 @@ deleteBtnWifi.addEventListener('click', function() {
 deleteDoor.addEventListener('click', function() {
   this.closest('.box').remove();
 });
+deleteTV.addEventListener('click', function() {
+  this.closest('.box').remove();
+});
+
 
 
 
@@ -313,36 +353,35 @@ doorToggleSwitch.addEventListener('change', function() {
   doorSet.disabled = doorToggleSwitch.checked;
 });
 
-lightSet.disabled = true;
+
 lightSlider.checked = localStorage.getItem("ba-lightSet") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
   localStorage.setItem("ba-lightSet",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 
-
-
-
-
-
-
+TVToggleSwitch.checked = localStorage.getItem("ba-tvOn") == "true" ? true : false;
+TVToggleSwitch.addEventListener('change', function() {
+  localStorage.setItem("ba-tvOn",TVToggleSwitch.checked);
+  TVSet.disabled = !TVToggleSwitch.checked;
+});
 
 
 saveButton.onclick = function() {
-  const minTemp = parseInt(document.getElementById("min").value);
-  const maxTemp = parseInt(document.getElementById("max").value);
-  if (isNaN(minTemp) || isNaN(maxTemp)) {
-    alert("Please enter valid numbers for both min and max temperature!");
+  let userInput = parseInt(input.value);
+  if (isNaN(userInput)) {
+    alert("Please enter valid temperature!");
+    sendButton.disabled = true;
     return;
   }
   sendButton.disabled = false;
 };
+
 sendButton.onclick = function() {
-  let minTemp = document.getElementById("min").value;
-  let maxTemp = document.getElementById("max").value;
   let userInput = parseInt(input.value);
-  if (userInput < minTemp || userInput > maxTemp) {
-    alert("Please enter a value between " + minTemp + " and " + maxTemp);
+  if (userInput < 18 || userInput > 30) {
+    alert("Please enter a value between " + "18" + " and " + "30");
+
     return;
   }
   sendButton.disabled = true;
@@ -365,68 +404,7 @@ window.onload = function() {
 }
 
 
-
-humiditySaveButton.onclick = function() {
-  let userInput = parseInt(humidityInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  humiditySendButton.disabled = false;
-};
-
-humiditySendButton.onclick = function() {
-  let userInput = parseInt(humidityInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  humiditySendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("ba-humidity",humidityInput.value);
-};
-
-humiditySetButton.addEventListener("click", function() {
-  humidityPopup.style.display = "block";
-});
-
-
-closeHumidityPopupButton.addEventListener("click", function() {
-  humidityPopup.style.display = "none";
-});
-
-
-humidityInput.addEventListener("input", function() {
-  if (humidityInput.value !== "" || humidityInput.value < 0) {
-    humiditySendButton.disabled = false;
-  } 
-  humiditySendButton.disabled = true;
-});
-
-
-
-
-
-
-
-function openHumidityPopup() {
-  
-  humidityPopup.style.display = "block";
-}
-
-co2SaveButton.onclick = function() {
-  let userInput = parseInt(co2Input.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  co2SendButton.disabled = false;
-};
-
-
-
-
- lightSave.onclick = function() {
+lightSave.onclick = function() {
   let userInput = parseInt(lightInput.value);
   if (isNaN(userInput)) {
     alert("Please enter a valid number for brigtness!");
@@ -458,18 +436,84 @@ lightInput.addEventListener("input", function() {
 
 
 
-co2SendButton.onclick = function() {
-  let userInput = parseInt(co2Input.value);
-  if (isNaN(userInput)) {
+
+
+humiditySetButton.addEventListener("click", function() {
+  humidityPopup.style.display = "block";
+});
+
+
+closeHumidityPopupButton.addEventListener("click", function() {
+  humidityPopup.style.display = "none";
+});
+
+
+humidityInput.addEventListener("input", function() {
+  if (humidityInput.value !== "" || humidityInput.value < 0 ) {
+    humiditySendButton.disabled = false;
+  } 
+  humiditySendButton.disabled = true;
+});
+
+
+humiditySendButton.onclick = function() {
+  let userInput = parseInt(humidityInput.value);
+  if (isNaN(userInput) ) {
     alert("Please enter a valid number for humidity!");
     return;
   }
-  co2SendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("ba-co2",co2Input.value);
+  humiditySendButton.disabled = false;
+  localStorage.setItem("ba-humidity",humidityInput.value);
+  alert("User input: " + humidityInput.value);
 };
+humiditySaveButton.addEventListener("click" , function() {
+  if(humidityInput.value < 30 ||humidityInput.value > 70){
+    alert("Please enter a valid number for humidity!");
+    humiditySendButton.disabled = true;
+    
+  }
+  else{
+    humiditySendButton.disabled = false;
+  }
+
+  });
 
 
+co2SendButton.onclick = function() {
+  let userInput = parseInt(co2Input.value);
+  if (isNaN(userInput)) {
+    alert("Please enter a valid number for co2!");
+    return;
+  }
+  co2SendButton.disabled = false;
+  localStorage.setItem("ba-co2",co2Input.value);
+  alert("User input: " + userInput);
+ 
+};
+co2SaveButton.addEventListener("click" , function() {
+  let userInput = parseInt(co2Input.value);
+  if (userInput < 0 ||userInput > 10) {
+    alert("Please enter a valid number for humidity!");
+    co2SendButton.disabled = true;
+  } else {
+  co2SendButton.disabled = false;
+};});
+
+
+co2Input.addEventListener("input", function() {
+  if (co2Input.value !== "" || co2Input.value < 0) {
+    co2SendButton.disabled = false;
+  
+  } else {
+   co2SendButton.disabled = true;
+  
+  }
+});
+  
+   function openHumidityPopup() {
+  
+  humidityPopup.style.display = "block";
+}
 
 
 
@@ -493,17 +537,6 @@ lightSet.addEventListener("click", function() {
   lightPopup.style.display = "block";
 });
 
-
-
-co2Input.addEventListener("input", function() {
-  if (co2Input.value !== "" || co2Input.value < 0) {
-    co2SendButton.disabled = false;
-    co2SetButton.disabled = false;
-  } else {
-   co2SendButton.disabled = true;
-   co2SetButton.disabled = true;
-  }
-});
 
 
 
@@ -543,6 +576,21 @@ closeTVPopupButton.addEventListener("click", function() {
 
 lightInput.addEventListener("input", function() {
   if (lightInput.value !== "" ||lightInput.value < 0) {
+   lightSave.disabled = false; 
+  } else {
+    lightSave.disabled = true;
+  }
+});
+
+TVVolume.addEventListener("input", function() {
+  if (TVVolume.value !== "" ) {
+   lightSave.disabled = false; 
+  } else {
+    lightSave.disabled = true;
+  }
+});
+TVNumber.addEventListener("input", function() {
+  if (TVNumber.value !== "" ) {
    lightSave.disabled = false; 
   } else {
     lightSave.disabled = true;
