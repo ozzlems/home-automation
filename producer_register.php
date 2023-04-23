@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 @include 'p-config.php';
 
 if(isset($_POST['submit'])){
@@ -39,6 +39,11 @@ if(isset($_POST['submit'])){
 
 </head>
 <body>
+<div class="logout-container">
+  <form action="logout.php" method="post">
+    <input type="submit" name="submit" value="Logout" class="logout-btn">
+  </form>
+</div>
     <div class="form-producer">
         <form action="" method="post">
             <h3>Sign Up</h3>

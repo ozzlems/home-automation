@@ -77,19 +77,6 @@
     padding: 10px;
 }
 
-.form-container form .logout-btn {
-    background-color: dodgerblue;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
   
   .form-producer{
     min-height: 100vh;
@@ -162,17 +149,31 @@
     padding: 10px;
 }
 
-.form-producer form .logout-btn {
-    background-color: crimson;
-    color: white;
-    border: none;
+
+  .logout-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .logout-btn {
+    display: inline-block;
+    background-color: #090909;
+    color: #ffffff;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    font-size: 20px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.9s;
   }
+  
+  .logout-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  
   
