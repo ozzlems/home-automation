@@ -107,11 +107,17 @@ electricClose.addEventListener("click", function() {
 });
 
 electricSendButton.addEventListener("click", function() {
+  
   const electricAmount = electricInput.value;
+  if(electricAmount > 0 || isNaN(electricAmount)) {
   localStorage.setItem("ba-electric",electricAmount);
-  alert(`Electric amount set to ${electricAmount}`);
-  electricPopup.style.display = "none";
+  alert(`User input  ${electricAmount}`);
+  electricPopup.style.display = "none"; }
+  else {
+    alert("Please enter valid number !");
+  }
 });
+
 
 
 
@@ -403,7 +409,6 @@ window.onload = function() {
   document.getElementById("popup").style.display = "none";
 }
 
-
 lightSave.onclick = function() {
   let userInput = parseInt(lightInput.value);
   if (isNaN(userInput)) {
@@ -411,17 +416,17 @@ lightSave.onclick = function() {
     return;
   }
  lightSave.disabled = false;
- lightSend.disabled = false;
+ 
 };
 
 
 lightSend.onclick = function() {
   let userInput = parseInt(lightInput.value);
   if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
+    alert("Please enter a valid number!");
     return;
   }
-  localStorage.setItem("ba-bright",lightInput.value);
+  localStorage.setItem("k-bright",lightInput.value);
  lightSend.disabled = true;
   alert("User input: " + userInput);
 };
@@ -431,8 +436,22 @@ lightInput.addEventListener("input", function() {
    lightSave.disabled = false; 
   } else {
     lightSave.disabled = true;
+  
   }
 });
+lightSave.addEventListener("click" , function() {
+    
+  if (lightInput.value < 0 ||lightInput.value > 100) {
+    alert("Please enter number between 0 - 100 ");
+    lightSave.disabled = true;
+    return;
+  } else {
+   lightSend.disabled = false;
+};});
+
+
+
+
 
 
 
@@ -584,15 +603,15 @@ lightInput.addEventListener("input", function() {
 
 TVVolume.addEventListener("input", function() {
   if (TVVolume.value !== "" ) {
-   lightSave.disabled = false; 
+   TVSave.disabled = false; 
   } else {
-    lightSave.disabled = true;
+    TVSave.disabled = true;
   }
 });
 TVNumber.addEventListener("input", function() {
   if (TVNumber.value !== "" ) {
-   lightSave.disabled = false; 
+   TVSave.disabled = false; 
   } else {
-    lightSave.disabled = true;
+    TVSave.disabled = true;
   }
 });

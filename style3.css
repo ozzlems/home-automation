@@ -1,3 +1,4 @@
+
 *{
   margin : 0;
   padding : 0;
@@ -17,10 +18,10 @@ h1{
   text-align: center;
   text-emphasis: none;
   margin-top: 3rem;
+ padding-bottom: 2rem;
   font-size:38px;
   justify-content: center;
  letter-spacing: 1.4px;
- padding-bottom: 2rem;
      
 } 
 .general{
@@ -41,15 +42,19 @@ h1{
 justify-content: left;
 align-items: left;
 flex-wrap: wrap;
-  gap: 100px;
+  gap:50px;
   padding-right: 10%;
   padding-left: 10.6%;
   margin-top: 7rem;
-  margin-bottom: 1%;
+  
   
 
 }
-
+@media screen and (max-width: 800px) {
+  .box {
+    min-width: 100%;
+  }
+}
 
 .box {
   margin: 10px;
@@ -60,8 +65,8 @@ flex-wrap: wrap;
   background-color: #fff;
   box-sizing: border-box;
   width: 20%;
-}
 
+}
 
 
 .box i {
@@ -73,11 +78,7 @@ flex-wrap: wrap;
   font-size: 20px;
   margin-bottom: 8px;
 }
-@media screen and (max-width: 800px) {
-  .box {
-    min-width: 100%;
-  }
-}
+
 .box p {
   font-size: 36px;
   margin-bottom: 20px;
@@ -86,6 +87,8 @@ flex-wrap: wrap;
 .button-container {
   display: flex;
   justify-content: space-between;
+ 
+
 }
 
 .set-button {
@@ -182,16 +185,33 @@ z-index: 999;
 
 .input-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 10px;
   align-items: center;
   
   
 }
+.input-container label {
+  margin-bottom: 15px;
+
+}
+
+#min::placeholder {
+  color: rgb(65, 65, 65);
+  font-weight: bold;
+}
+
+#max::placeholder {
+  color: rgb(65, 65, 65);
+  font-weight: bold;
+}
+
 .input-field {
   border: 1px solid #000000;
   border-radius: 3px;
-  padding: 5px;
+  padding: 6px;
+  align-self: center;
   font-size: 16px;
 display: flex;
   
@@ -201,6 +221,7 @@ label {
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
+
   
 }
 
@@ -213,6 +234,7 @@ input[type="number"] {
   font-size: 16px;
   margin-right: 10px;
 }
+
 
 button {
 border: none;
@@ -227,13 +249,13 @@ border: none;
   background-color:#3c903f;
   border: none;
   color: #fff;
-  padding: 10px 12px;
+  padding: 10px 10px;
  margin-right: 1rem;
-  margin-left: 1rem;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+ 
    
 }
 
@@ -246,6 +268,7 @@ border: none;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  
  
 }
 
@@ -353,30 +376,6 @@ border: none;
   margin-top: 20px;
 }
 
- .light {
-  width: 50%;
-  flex-direction: column;
-  display: flex;
-  margin-top: -2px;
- }
- .wifi{
-  width: 38%;
-  flex-direction: column;
-  display: flex;
-  position: relative;
-   bottom: -10px;
-  padding-bottom: 20px;
-
- }
- .door{
-  width: 38%;
-  flex-direction: column;
-  display: flex;
-  position: relative;
-   bottom: -10px;
-  padding-bottom: 20px;
- }
-
 .device-container {
   display: flex;
    justify-content: space-between;
@@ -387,43 +386,9 @@ margin-left: -60rem;
   margin-top: 8rem;
 }
 
-.card {
-  background-color: #fffffff6;
 
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  height: 240px;
-  width: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
- 
-}
 
-.card-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
 
-.card-header i {
-  font-size: 30px;
-  margin-right: 10px;
-}
-
-.card-header h3 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.card-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .switch {
   position: relative;
@@ -590,15 +555,6 @@ input:checked + .slider:before {
 #wifi-buttons{
  padding-top: 2px ; 
 }
-#door-card{
-margin-left: 81%;
-top:31.8rem;
-position: absolute;
-background-color: #fffffff6; 
-z-index: 999;
-backdrop-filter: blur(5px);
-
-}
 
 .wifi-popup-timer {
   display: flex;
@@ -728,7 +684,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .input-container input[type="time"] {
   width: 85%;
-  padding: 5px 10px;
+  padding: 0px 5px;
   margin: 5px 0;
   box-sizing: border-box;
   border: 2px solid black;
@@ -822,6 +778,16 @@ width: 38%;
 }
 
 
+.close-electric-button{
+position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+
 #water-popup .popup-content {
   width: 400px;
   height: 330px;
@@ -846,24 +812,6 @@ width: 38%;
 }
 
 
-
-
-
-#set-water-button {
-  background-color: #b81d1d;
-  border-radius: 4px;
-  color: #fff;
-  margin: auto;
-  align-items: center;
-  text-align: center;
-  border: none;
-  font-size: 16px;
-width: 5rem;
-margin-top: 1.125rem;
-cursor: pointer; }
-  
-
-
 .close-water-button{
 
 position: absolute;
@@ -876,15 +824,7 @@ cursor: pointer;
 
 }
 
-.close-electric-button{
-position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #555;
-  cursor: pointer;
-}
+
 
 
 
