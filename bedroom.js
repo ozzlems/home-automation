@@ -99,6 +99,7 @@ speakerSave.addEventListener("click" , function() {
     }
     speakerSend.disabled = false;
     localStorage.setItem("smartLevel" , speakerInput.value);
+    localStorage.setItem("colorBedroom", colorInput.value);
     alert("User input: " + speakerInput.value);
   };
 
@@ -364,7 +365,7 @@ speakerSave.addEventListener("click" , function() {
   doorSendButton.onclick = function() {
      
     alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
-    localStorage.setItem("be-doorTime", doorOnTime.value + " - " + doorOnTime.value);
+    localStorage.setItem("be-doorTime", doorOnTime.value + " - " + doorOffTime.value);
     doorPopup.style.display = "none";
   }
   

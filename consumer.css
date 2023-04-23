@@ -11,13 +11,14 @@
       background: linear-gradient(to left, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       margin: 0;
       padding: 0;
+      padding-bottom: 3rem;
   }
 
  h1{
     color: white;
     text-align: center;
     text-emphasis: none;
-    margin-top: 3rem;
+    margin-top: 4rem;
     font-size:40px;
     justify-content: center;
    letter-spacing: 1.4px;
@@ -29,12 +30,14 @@
     color: white;
     padding: 10px;
     position:absolute;
+    flex-direction: row;
+    font-size:32px;
+    flex-wrap: wrap;
     text-emphasis: none;
-    left: 7%;
-    margin-top: 6.2rem;
-    font-size:34px;
+    margin-left: 8%;
+    margin-top: 6rem;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.3px;
    }
 
    .rooms {

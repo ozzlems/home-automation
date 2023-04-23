@@ -74,7 +74,7 @@ electricSendButton.addEventListener("click", function() {
   
   const electricAmount = electricInput.value;
   if(electricAmount > 0 || isNaN(electricAmount)) {
-  localStorage.setItem("ba-electric",electricAmount);
+  localStorage.setItem("k-electric",electricAmount);
   alert(`User input  ${electricAmount}`);
   electricPopup.style.display = "none"; }
   else {
@@ -304,6 +304,7 @@ wifiSendButton.onclick = function() {
 
 doorSendButton.onclick = function() {
   // Send wifi status to server
+  localStorage.setItem("k-doorTime", doorOnTime.value + " - " + doorOffTime.value);
   doorPopup.style.display = "none";
 }
 

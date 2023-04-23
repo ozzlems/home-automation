@@ -90,7 +90,7 @@ if(wifiOn == "ON"){
 
 
 speakerRoot.innerHTML += '<h4 style="color: red; background-color:white ;  font-size:18px; padding: 5px 15px 5px 15px ; margin-top:5% ; border-top-left-radius :5px ;  border-top-right-radius :5px ; margin-top:16px; font-size:20px; ">' + "Volume:  %" + smartLevel + '</h4>';
-speakerRoot.innerHTML += '<h4 style="color:   #B22222; font-size:20px ; background-color:white;  padding: 0px 46px 5px 45.8px ; border-bottom-left-radius :5px ;  border-bottom-right-radius :5px ; font-size:22px ;">' + smartOn + '</h4>';
+speakerRoot.innerHTML += '<h4 style="color:#B22222; font-size:20px ; background-color:white;  padding: 0px 46px 5px 45.8px ; border-bottom-left-radius :5px ;  border-bottom-right-radius :5px ; font-size:22px ;">' + smartOn + '</h4>';
 tempRoot.innerHTML += '<h3 style="color: red; font-size:25px; margin-top: 12px ; ">' + temperature + " °C " + '</h3>';
 wifiOn == "OFF" ? wifiRoot.innerHTML +=  '<h4 style="color: red; font-size:20px; margin-top:16px; ">' + " Open Between : " + wifiString + '</h4>' : 0;
 wifiRoot.innerHTML +=  '<h3 style="color: #8b1c1c; font-size:22px ; margin-top: 16px ; ">' + wifiOn + '</h3>';
@@ -101,5 +101,4 @@ brightRoot.innerHTML += '<h3 style="color: #8b1c1c;  margin-top: 20% ; font-size
 doorOn == "OFF" ? doorRoot.innerHTML += '<h4 style="color: red; font-size:20px ;margin-top:16px;">'   + " Open Between : " + doorString + '</h4>' : 0;
 doorRoot.innerHTML += '<h3 style="color: #8b1c1c; margin-top: 16px ; font-size:22px ">' + doorOn + '</h3>'
 electricRoot.innerHTML += '<h3 style="color: red; font-size:20px; ">' +  electric + " kWh"+ '</h3>';
-
-color.innerHTML += this.color;
+colorCard.style.backgroundColor = color;
