@@ -80,4 +80,4 @@ brightRoot.innerHTML += '<h3 style="color: #8b1c1c; margin-top: 20% ; font-size:
 doorOn == "OFF" ? doorRoot.innerHTML += '<h4 style="color: red; font-size:20px ;margin-top:16px;">'   + " Open Between : " + doorString + '</h4>' : 0;
 doorRoot.innerHTML += '<h3 style="color: #8b1c1c; margin-top: 16px ; font-size:22px ">' + doorOn + '</h3>'
 electricRoot.innerHTML += '<h3 style="color: red; font-size:20px; ">' +  electric + " kWh"+ '</h3>';
-waterRoot.innerHTML += '<h3 style="color: red;">' + water+ " m³" + '</h3>';
+waterRoot.innerHTML += '<h3 style="color: red; font-size:20px;">' + water+ " m³" + '</h3>';
