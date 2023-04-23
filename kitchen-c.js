@@ -45,10 +45,10 @@ if(!temperature)
 temperature = 25;
 
 if(!humidity){
-  humidity = 25;
+  humidity = 30;
 }
 if(!co2){
-  co2 = 25;
+  co2 = 1;
 }
 if(!bright){
   bright=0;

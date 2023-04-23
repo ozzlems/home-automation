@@ -1,30 +1,30 @@
 const tempRoot = document.getElementById("tempRoot");
-const wifiRoot = document.getElementById("wifi-buttons");
-const doorRoot = document.getElementById("door-buttons")
+const wifiRoot = document.getElementById("wifiRoot");
+const doorRoot = document.getElementById("doorRoot")
 const humRoot = document.getElementById("humRoot");
 const co2Root = document.getElementById("co2Root");
 const brightRoot = document.getElementById("brightRoot");
 const electricRoot = document.getElementById("electricRoot");
 const waterRoot = document.getElementById("waterRoot");
-var temperature = localStorage.getItem("ba-temperature");
-var wifiString = localStorage.getItem("ba-wifiTime");
-var doorString = localStorage.getItem("ba-doorTime");
-var humidity = localStorage.getItem("ba-humidity");
-var co2 = localStorage.getItem("ba-co2");
-var wifiOn = localStorage.getItem("ba-wifiCheck");
-var bright = localStorage.getItem("ba-bright");
-var electric = localStorage.getItem("ba-electric");
-var doorOn = localStorage.getItem("ba-doorCheck");
-var lightOn = localStorage.getItem("ba-lightSet");
-var water = localStorage.getItem("ba-water");
+var temperature = localStorage.getItem("b-temperature");
+var wifiString = localStorage.getItem("b-wifiTime");
+var doorString = localStorage.getItem("b-doorTime");
+var humidity = localStorage.getItem("b-humidity");
+var co2 = localStorage.getItem("b-co2");
+var wifiOn = localStorage.getItem("b-wifiCheck");
+var bright = localStorage.getItem("b-bright");
+var electric = localStorage.getItem("b-electric");
+var doorOn = localStorage.getItem("b-doorCheck");
+var lightOn = localStorage.getItem("b-lightSet");
+var water = localStorage.getItem("b-water");
 
 if(!water)
-water = 0;
+water =0;
 
-if(!doorOn)
-doorOn = "OFF";
-else
+if(doorOn == "true")
 doorOn = "ON";
+else
+doorOn = "OFF";
 
 if(wifiOn == "true")
 wifiOn = "ON";
@@ -45,10 +45,10 @@ if(!temperature)
 temperature = 25;
 
 if(!humidity){
-  humidity = 25;
+  humidity = 30;
 }
 if(!co2){
-  co2 = 25;
+  co2 = 1;
 }
 if(!bright){
   bright=0;
@@ -70,14 +70,14 @@ if(wifiOn == "ON"){
 }
  
 
-tempRoot.innerHTML += '<h3 style="color: red;">' + temperature + '</h3>';
-wifiRoot.innerHTML +=  '<h4 style="color: red;">' + " Open Between : " + wifiString + '</h4>';
-humRoot.innerHTML += '<h3 style="color: red;">' + humidity + '</h3>';
-co2Root.innerHTML += '<h3 style="color: red;">' + co2 + '</h3>';
-wifiRoot.innerHTML +=  '<h3 style="color: red;">' + wifiOn + '</h3>';
-brightRoot.innerHTML += '<h3 style="color: red;">' + "Brightness is % " +  bright + '</h3>';
-doorRoot.innerHTML += '<h4 style="color: red;"' + " Open Between : " + doorString + '</h4>';
-doorRoot.innerHTML += '<h3 style="color: red;">' + doorOn + '</h3>'
-electricRoot.innerHTML += '<h3 style="color: red;">' +  electric + " kWh"+ '</h3>';
-brightRoot.innerHTML += '<h3 style="color: red;">' + lightOn + '</h3>';
-waterRoot.innerHTML += '<h3 style="color: red;">' + water+ " m³ "  + '</h3>';
+tempRoot.innerHTML += '<h3 style="color: red; font-size:25px; margin-top: 12px ; ">' + temperature + " °C " + '</h3>';
+wifiOn == "OFF" ? wifiRoot.innerHTML +=  '<h4 style="color: red; font-size:20px; margin-top:16px; ">' + " Open Between : " + wifiString + '</h4>' : 0;
+wifiRoot.innerHTML +=  '<h3 style="color: #8b1c1c; font-size:22px ; margin-top: 16px ; ">' + wifiOn + '</h3>';
+humRoot.innerHTML += '<h3 style="color: red; font-size:25px; margin-top: 12px ; ">' + "% " +  humidity + '</h3>';
+co2Root.innerHTML += '<h3 style="color: red; font-size:25px; margin-top: 12px ; ">' + "% " + co2 + '</h3>';
+brightRoot.innerHTML += '<h3 style="color: red; font-size:20px; margin-top:16px; ">' + "Brightness is % " +  bright + '</h3>';
+brightRoot.innerHTML += '<h3 style="color: #8b1c1c; margin-top: 20% ; font-size:22px; ">' + lightOn + '</h3>';
+doorOn == "OFF" ? doorRoot.innerHTML += '<h4 style="color: red; font-size:20px ;margin-top:16px;">'   + " Open Between : " + doorString + '</h4>' : 0;
+doorRoot.innerHTML += '<h3 style="color: #8b1c1c; margin-top: 16px ; font-size:22px ">' + doorOn + '</h3>'
+electricRoot.innerHTML += '<h3 style="color: red; font-size:20px; ">' +  electric + " kWh"+ '</h3>';
+waterRoot.innerHTML += '<h3 style="color: red;">' + water+ " m³" + '</h3>';

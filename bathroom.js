@@ -71,12 +71,16 @@ electricClose.addEventListener("click", function() {
 });
 
 electricSendButton.addEventListener("click", function() {
+  
   const electricAmount = electricInput.value;
+  if(electricAmount > 0 || isNaN(electricAmount)) {
   localStorage.setItem("ba-electric",electricAmount);
-  alert(`Electric amount set to ${electricAmount}`);
-  electricPopup.style.display = "none";
+  alert(`User input  ${electricAmount}`);
+  electricPopup.style.display = "none"; }
+  else {
+    alert("Please enter valid number !");
+  }
 });
-
 waterSetButton.addEventListener("click", function() {
   waterPopup.style.display = "block";
 });
@@ -87,9 +91,14 @@ waterClose.addEventListener("click", function() {
 
 waterSendButton.addEventListener("click", function() {
   const waterAmount = waterInput.value;
-  localStorage.setItem("ba-water",waterAmount);
+  if(waterAmount > 0 || isNaN(waterAmount)) {
+  localStorage.setItem("b-water",waterAmount);
   alert(`Water amount set to ${waterAmount}`);
-  waterPopup.style.display = "none";
+ waterPopup.style.display = "none"; }
+else {
+    alert("Please enter valid number !");
+  }
+ 
 });
 
 
@@ -288,8 +297,9 @@ doorSaveButton.onclick = function() {
 
 
 wifiSendButton.onclick = function() {
- wifiPopup.style.display = "none";
- localStorage.setItem("ba-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
+  // Send wifi status to server
+  wifiPopup.style.display = "none";
+  localStorage.setItem("b-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
 }
 
 doorSendButton.onclick = function() {
@@ -298,34 +308,29 @@ doorSendButton.onclick = function() {
 }
 
 deleteBtnLight.addEventListener('click', function() {
-  this.closest('.box').remove();
+  this.closest('.card').remove();
 });
 
 deleteBtnWifi.addEventListener('click', function() {
-  this.closest('.box').remove();
+  this.closest('.card').remove();
 });
 
 deleteDoor.addEventListener('click', function() {
-  this.closest('.box').remove();
+  this.closest('.card').remove();
 });
-
-
-
-wifiToggleSwitch.checked = localStorage.getItem("ba-wifiCheck") == "true" ? true : false;
+wifiToggleSwitch.checked = localStorage.getItem("b-wifiCheck") == "true" ? true : false;
 wifiToggleSwitch.addEventListener('change', function() {
-  localStorage.setItem("ba-wifiCheck",wifiToggleSwitch.checked);
+  localStorage.setItem("b-wifiCheck",wifiToggleSwitch.checked);
   wifiSet.disabled = wifiToggleSwitch.checked;
 });
-doorToggleSwitch.checked = localStorage.getItem("ba-doorCheck") == "true" ? true : false;
+doorToggleSwitch.checked = localStorage.getItem("b-doorCheck") == "true" ? true : false;
 doorToggleSwitch.addEventListener('change', function() {
-  localStorage.setItem("ba-doorCheck",doorToggleSwitch.checked);
+  localStorage.setItem("b-doorCheck",doorToggleSwitch.checked);
   doorSet.disabled = doorToggleSwitch.checked;
 });
-
-lightSet.disabled = true;
-lightSlider.checked = localStorage.getItem("ba-lightSet") == "true" ? true : false;
+lightSlider.checked = localStorage.getItem("b-lightSet") == "true" ? true : false;
 lightSlider.addEventListener('change', function() {
-  localStorage.setItem("ba-lightSet",lightSlider.checked);
+  localStorage.setItem("b-lightSet",lightSlider.checked);
   lightSet.disabled = !lightSlider.checked;
 });
 
@@ -356,7 +361,7 @@ sendButton.onclick = function() {
   }
   sendButton.disabled = true;
   alert("User input: " + userInput);
-  localStorage.setItem("ba-temperature",userInput);
+  localStorage.setItem("b-temperature",userInput);
 };
 
 function openPopup() {
@@ -375,26 +380,6 @@ window.onload = function() {
 
 
 
-humiditySaveButton.onclick = function() {
-  let userInput = parseInt(humidityInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  humiditySendButton.disabled = false;
-};
-
-humiditySendButton.onclick = function() {
-  let userInput = parseInt(humidityInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  humiditySendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("ba-humidity",humidityInput.value);
-};
-
 humiditySetButton.addEventListener("click", function() {
   humidityPopup.style.display = "block";
 });
@@ -406,32 +391,79 @@ closeHumidityPopupButton.addEventListener("click", function() {
 
 
 humidityInput.addEventListener("input", function() {
-  if (humidityInput.value !== "" || humidityInput.value < 0) {
+  if (humidityInput.value !== "" || humidityInput.value < 0 ) {
     humiditySendButton.disabled = false;
   } 
   humiditySendButton.disabled = true;
 });
 
 
+humiditySendButton.onclick = function() {
+  let userInput = parseInt(humidityInput.value);
+  if (isNaN(userInput) ) {
+    alert("Please enter a valid number for humidity!");
+    return;
+  }
+  humiditySendButton.disabled = false;
+  localStorage.setItem("b-humidity",humidityInput.value);
+  alert("User input: " + humidityInput.value);
+};
+humiditySaveButton.addEventListener("click" , function() {
+  if(humidityInput.value < 30 ||humidityInput.value > 70){
+    alert("Please enter a valid number for humidity!");
+    humiditySendButton.disabled = true;
+    
+  }
+  else{
+    humiditySendButton.disabled = false;
+  }
+
+  });
 
 
+  co2SaveButton.onclick = function() {
+    let userInput = parseInt(co2Input.value);
+    if (isNaN(userInput)) {
+      alert("Please enter a valid number!");
+      return;
+    }
+    co2SendButton.disabled = false;
+  };
+  
 
-
+  co2SendButton.onclick = function() {
+    let userInput = parseInt(co2Input.value);
+    if (isNaN(userInput)) {
+      alert("Please enter a valid number for co2 !");
+      return;
+    }
+    co2SendButton.disabled = false;
+    localStorage.setItem("b-co2",co2Input.value);
+    alert("User input: " + userInput);
+  };
+  co2SaveButton.addEventListener("click" , function() {
+    
+    if (co2Input.value < 0 ||co2Input.value > 10) {
+      alert("Please enter a valid number for co2!");
+      co2SendButton.disabled = true;
+      return;
+    } else {
+    co2SendButton.disabled = false;
+  };});
+  
+  
+  co2Input.addEventListener("input", function() {
+    if (co2Input.value !== "" || co2Input.value < 0 ) {
+      co2SendButton.disabled = false;
+    } 
+    co2SendButton.disabled = true;
+  });
+  
 
 function openHumidityPopup() {
   
   humidityPopup.style.display = "block";
 }
-
-co2SaveButton.onclick = function() {
-  let userInput = parseInt(co2Input.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  co2SendButton.disabled = false;
-};
-
 
 
 
@@ -442,17 +474,17 @@ co2SaveButton.onclick = function() {
     return;
   }
  lightSave.disabled = false;
- lightSend.disabled = false;
+ 
 };
 
 
 lightSend.onclick = function() {
   let userInput = parseInt(lightInput.value);
   if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
+    alert("Please enter a valid number!");
     return;
   }
-  localStorage.setItem("ba-bright",lightInput.value);
+  localStorage.setItem("b-bright",lightInput.value);
  lightSend.disabled = true;
   alert("User input: " + userInput);
 };
@@ -462,21 +494,21 @@ lightInput.addEventListener("input", function() {
    lightSave.disabled = false; 
   } else {
     lightSave.disabled = true;
+  
   }
 });
-
-
-
-co2SendButton.onclick = function() {
-  let userInput = parseInt(co2Input.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
+lightSave.addEventListener("click" , function() {
+    
+  if (lightInput.value < 0 ||lightInput.value > 100) {
+    alert("Please enter number between 0 - 100 ");
+    lightSave.disabled = true;
     return;
-  }
-  co2SendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("ba-co2",co2Input.value);
-};
+  } else {
+   lightSend.disabled = false;
+};});
+
+
+
 
 
 
@@ -499,19 +531,8 @@ co2SetButton.addEventListener("click", function() {
   co2Popup.style.display = "block";
 });
 lightSet.addEventListener("click", function() {
+
   lightPopup.style.display = "block";
-});
-
-
-
-co2Input.addEventListener("input", function() {
-  if (co2Input.value !== "" || co2Input.value < 0) {
-    co2SendButton.disabled = false;
-    co2SetButton.disabled = false;
-  } else {
-   co2SendButton.disabled = true;
-   co2SetButton.disabled = true;
-  }
 });
 
 

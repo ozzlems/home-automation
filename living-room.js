@@ -426,7 +426,7 @@ lightSend.onclick = function() {
     alert("Please enter a valid number!");
     return;
   }
-  localStorage.setItem("k-bright",lightInput.value);
+  localStorage.setItem("ba-bright",lightInput.value);
  lightSend.disabled = true;
   alert("User input: " + userInput);
 };
@@ -450,8 +450,18 @@ lightSave.addEventListener("click" , function() {
 };});
 
 
-
-
+lightInput.addEventListener("input", function() {
+    
+  if (lightInput.value.trim() === "" || parseInt(lightInput.value) < 0 || parseInt(lightInput.value) > 100 ) {
+     lightSave.disabled = true;
+    lightSend.disabled = true;
+    
+    } else {
+lightSave.disabled = false;
+      
+  
+    }
+  });
 
 
 
@@ -485,6 +495,7 @@ humiditySendButton.onclick = function() {
   localStorage.setItem("ba-humidity",humidityInput.value);
   alert("User input: " + humidityInput.value);
 };
+
 humiditySaveButton.addEventListener("click" , function() {
   if(humidityInput.value < 30 ||humidityInput.value > 70){
     alert("Please enter a valid number for humidity!");

@@ -77,34 +77,47 @@ speakerSlider.addEventListener("change", () => {
 
 speakerSave.disabled = true;
 speakerSend.disabled = true;
-// save butonuna tıklandığında
-speakerSave.addEventListener("click", function() {
 
-  
-    if (speakerInput.value < 0) {
+speakerSave.addEventListener("click" , function() {
+  if(speakerInput.value < 0 ||speakerInput.value > 100){
+    alert("Please enter a valid number !");
+    speakerSend.disabled = true;
+    
+  }
+  else{
+   speakerSend.disabled = false;
+  }
+
+  });
+
+
+  speakerSend.onclick = function() {
+    let userInput = parseInt(speakerInput.value);
+    if (isNaN(userInput) ) {
+      alert("Please enter a valid number !");
       return;
     }
-  
     speakerSend.disabled = false;
-  });
+    localStorage.setItem("smartLevel" , speakerInput.value);
+    alert("User input: " + speakerInput.value);
+  };
 
-  speakerSend.addEventListener("click", function() {
-    const volume = parseInt(speakerInput.value);
-    localStorage.setItem("smartLevel" , volume);
-  alert("The volume you entered is: " + volume);
-  });
-  
-  
+ 
   speakerInput.addEventListener("input", function() {
     
-    if (speakerInput.value.trim() === "" || parseInt(speakerInput.value) < 0) {
+    if (speakerInput.value.trim() === "" || parseInt(speakerInput.value) < 0 || parseInt(speakerInput.value) > 100 ) {
         speakerSave.disabled = true;
         speakerSend.disabled = true;
+      
       } else {
         speakerSave.disabled = false;
-        speakerSend.disabled = true;
+        
+    
       }
     });
+
+
+
   
   speakerSet.addEventListener("click", function() {
     speakerPopup.style.display = "block";
@@ -120,513 +133,496 @@ speakerSave.addEventListener("click", function() {
     }
   };
 
-  speakerSave.addEventListener("click", function() {
-    const volume = parseInt(speakerInput.value);
-  
-    // input değeri 0'dan küçükse veya boşsa, işlem yapmadan çık
-    if (volume < 0 || isNaN(volume)) {
-      return;
-    }
-  
-    speakerSend.disabled = false;
+
+
+
+
+  electricSetButton.addEventListener("click", function() {
+    electricPopup.style.display = "block";
+   
   });
   
-
-
-
-electricSetButton.addEventListener("click", function() {
-  electricPopup.style.display = "block";
-});
-
-electricClose.addEventListener("click", function() {
-  electricPopup.style.display = "none";
-});
-
-electricSendButton.addEventListener("click", function() {
-  // Get the user input from the input field
-  const electricAmount = electricInput.value;
-
-  // Do something with the electric amount, such as store it in a variable or send it to a server
-  alert(`Electric amount set to ${electricAmount}`);
-
-  // Hide the popup
-  electricPopup.style.display = "none";
-  localStorage.setItem("be-electric",electricInput.value);
-});
-
-electricSendButton.addEventListener("click", function() {
-  // Get the user input from the input field
-  const electricAmount = electricInput.value;
-
-  // Do something with the electric amount, such as send it to a server
-  console.log(`Sending electric amount of ${electricAmount}`);
-
-  // Hide the popup
-  electricPopup.style.display = "none";
-});
-
-
-let intervalId;
-
-
-
-
-function startWifiTimer(onTime, offTime) {
-  clearInterval(intervalId);
+  electricClose.addEventListener("click", function() {
+    electricPopup.style.display = "none";
+  });
   
-  const now = new Date();
-  const onTimeParts = onTime.split(":");
-  const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
-  const offTimeParts = offTime.split(":");wifiToggleSwitch.onchange = function() {
-    wifiSendButton.disabled = true;
-  }
-  const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
+  electricSendButton.addEventListener("click", function() {
+    
+    const electricAmount = electricInput.value;
+    if(electricAmount > 0 || isNaN(electricAmount)) {
+    localStorage.setItem("be-electric",electricAmount);
+    alert(`User input  ${electricAmount}`);
+    electricPopup.style.display = "none"; }
+    else {
+      alert("Please enter valid number !");
+    }
+  });
   
-  if (onDateTime > now) {
-    intervalId = setInterval(() => {
-      const currentTime = new Date();
-      if (currentTime >= onDateTime) {
-        clearInterval(intervalId);
-        alert("Wifi is turned on!");
-      }
-    }, 1000);
-  } else if (offDateTime > now) {
-    intervalId = setInterval(() => {
-      const currentTime = new Date();
-      if (currentTime >= offDateTime) {
-        
-        clearInterval(intervalId);
-        alert("Wifi is turned off!");
-      }
-    }, 1000);
-   
-  } 
-   else {
-    alert("Invalid time settings.");
-  }
-}
-
-function openWifiPopup() {
-  wifiPopup.style.display = "block";
-}
-
-
-closeWifiPopupButton.onclick = function() {
-  wifiPopup.style.display = "none";
-}
-
-
-function startDoorTimer(onTime, offTime) {
-  clearInterval(intervalId);
   
-  const now = new Date();
-  const onTimeParts = onTime.split(":");
-  const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
-  const offTimeParts = offTime.split(":");wifiToggleSwitch.onchange = function() {
-    doorSendButton.disabled = true;
-  }
-  const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
   
-  if (onDateTime > now) {
-    intervalId = setInterval(() => {
-      const currentTime = new Date();
-      if (currentTime >= onDateTime) {
-        clearInterval(intervalId);
-        alert("Door is locked on!");
-      }
-    }, 1000);
-  } else if (offDateTime > now) {
-    intervalId = setInterval(() => {
-      const currentTime = new Date();
-      if (currentTime >= offDateTime) {
-        
-        clearInterval(intervalId);
-        alert("Wifi is locked off!");
-      }
-    }, 1000);
-   
-  } 
-   else {
-    alert("Invalid time settings.");
+  
+  let intervalId;
+  
+  function startWifiTimer(onTime, offTime) {
+    clearInterval(intervalId);
+    
+    const now = new Date();
+    const onTimeParts = onTime.split(":");
+    const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
+    const offTimeParts = offTime.split(":");
+    wifiToggleSwitch.onchange = function() {
+      wifiSendButton.disabled = true;
+    }
+    const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
+    
+    if (onDateTime > now) {
+      intervalId = setInterval(() => {
+        const currentTime = new Date();
+        if (currentTime >= onDateTime) {
+          clearInterval(intervalId);
+          alert("Wifi is turned on!");
+        }
+      }, 1000);
+    } else if (offDateTime > now) {
+      intervalId = setInterval(() => {
+        const currentTime = new Date();
+        if (currentTime >= offDateTime) {
+          
+          clearInterval(intervalId);
+          alert("Wifi is turned off!");
+        }
+      }, 1000);
+     
+    } 
+     else {
+      alert("Invalid time settings.");
+    }
   }
-}
-
-
-function openDoorPopup() {
-  doorPopup.style.display = "block";
-}
-
-
-closeDoorPopupButton.onclick = function() {
-  doorPopup.style.display = "none";
-}
-
-
-window.onclick = function(event) {
-  if (event.target == doorPopup) {
-    doorPopup.style.display = "none";
+  
+  function openWifiPopup() {
+    wifiPopup.style.display = "block";
   }
-}
-
-
-
-window.onclick = function(event) {
-  if (event.target == wifiPopup) {
+  
+  
+  closeWifiPopupButton.onclick = function() {
     wifiPopup.style.display = "none";
   }
-}
-
-
-wifiSaveButton.onclick = function() {
-  const wifiOnTime = wifiOnTimeInput.value;
-  const wifiOffTime = wifiOffTimeInput.value;
   
-  if (wifiToggleSwitch.checked) {
-    alert("Wifi is already turned on!");
-    return; }
-    else{
-    const offTime = new Date();
-    offTime.setHours(parseInt(wifiOffTime.split(":")[0]));
-    offTime.setMinutes(parseInt(wifiOffTime.split(":")[1]));
-    offTime.setSeconds(0);
-    
-    const now = new Date();
-    const remainingSeconds = (offTime.getTime() - now.getTime()) / 1000;
-    
-    setTimeout(function() {
-      wifiToggleSwitch.checked = false;
-      wifiSendButton.disabled = false;
-    }, remainingSeconds * 1000); }
- 
-    // Set timer for turning on wifi
-    const onTime = new Date();
-    onTime.setHours(parseInt(wifiOnTime));
-    onTime.setMinutes(0);
-    onTime.setSeconds(0);
-    
-    const now = new Date();
-    const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
-    console.log(doorOnTime.value);
-    if(isNan(doorOnTime.value )&& isNan(doorOnTime.value)) {
-    alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
-wifiSaveButton.disabled = true;
-wifiSendButton.disabled = true; }
-    setTimeout(function() {
-      wifiSendButton.disabled = false;
-    }, remainingSeconds * 1000);
   
-  wifiSendButton.disabled = false;
-}
-
-
-doorSaveButton.onclick = function() {
-  const DoorOnTime = doorOnTime.value;
-  const DoorOffTime = doorOffTime.value;
-  
-  if (doorToggleSwitch.checked) {
-    alert("Lock is already on!");
-    return;
-   }
-    else{
-    const offTime = new Date();
-    offTime.setHours(parseInt(DoorOffTime.split(":")[0]));
-    offTime.setMinutes(parseInt(DoorOffTime.split(":")[1]));
-    offTime.setSeconds(0);
+  function startDoorTimer(onTime, offTime) {
+    clearInterval(intervalId);
     
     const now = new Date();
-    const remainingSeconds = (offTime.getTime() - now.getTime()) / 1000;
-    
-    setTimeout(function() {
-      doorToggleSwitch.checked = false;
-      doorSendButton.disabled = false;
-    }, remainingSeconds * 1000); }
- 
-    // Set timer for turning on wifi
-    const onTime = new Date();
-    onTime.setHours(parseInt(doorOnTime));
-    onTime.setMinutes(0);
-    onTime.setSeconds(0);
-    
-    const now = new Date();
-    const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
-    
-    if(isNaN(doorOnTime.value) ||isNaN(doorOnTime.value) ) {
-        setTimeout(function() {
-          
-          alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
-          doorSendButton.disabled = false;
-        }, remainingSeconds * 1000); 
-        doorSendButton.disabled = false;}
-        else{
-          doorSaveButton.disabled = true;
-          doorSendButton.disabled = true;
-        }
-      
+    const onTimeParts = onTime.split(":");
+    const onDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(onTimeParts[0]), parseInt(onTimeParts[1]), 0);
+    const offTimeParts = offTime.split(":");wifiToggleSwitch.onchange = function() {
+      doorSendButton.disabled = true;
     }
+    const offDateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(offTimeParts[0]), parseInt(offTimeParts[1]), 0);
     
-
-wifiSendButton.onclick = function() {
-  // Send wifi status to server
-  wifiPopup.style.display = "none";
-  localStorage.setItem("be-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
-}
-
-
-
-
-
-doorSendButton.onclick = function() {
+    if (onDateTime > now) {
+      intervalId = setInterval(() => {
+        const currentTime = new Date();
+        if (currentTime >= onDateTime) {
+          clearInterval(intervalId);
+          alert("Door is locked on!");
+        }
+      }, 1000);
+    } else if (offDateTime > now) {
+      intervalId = setInterval(() => {
+        const currentTime = new Date();
+        if (currentTime >= offDateTime) {
+          
+          clearInterval(intervalId);
+          alert("Wifi is locked off!");
+        }
+      }, 1000);
+     
+    } 
+     else {
+      alert("Invalid time settings.");
+    }
+  }
+  
+  
+  function openDoorPopup() {
+    doorPopup.style.display = "block";
+  }
+  
+  
+  closeDoorPopupButton.onclick = function() {
+    doorPopup.style.display = "none";
+  }
+  
  
-  doorPopup.style.display = "none";
-  localStorage.setItem("be-doorTime", doorOnTime.value + " - " + doorOffTime.value);
-}
-
-deleteBtnLight.addEventListener('click', function() {
-  this.closest('.box').remove();
-});
-
-deleteBtnWifi.addEventListener('click', function() {
-  this.closest('.box').remove();
-});
-
-deleteDoor.addEventListener('click', function() {
-  this.closest('.box').remove();
-});
-
-deleteSpeaker.addEventListener('click', function() {
+  
+  window.onclick = function(event) {
+    if (event.target == doorPopup) {
+      doorPopup.style.display = "none";
+    }
+  }
+  
+  
+  
+  window.onclick = function(event) {
+    if (event.target == wifiPopup) {
+      wifiPopup.style.display = "none";
+    }
+  }
+  
+  wifiSendButton.disabled = true;
+  wifiSaveButton.onclick = function() {
+    const wifiOnTime = wifiOnTimeInput.value;
+    const wifiOffTime = wifiOffTimeInput.value;
+    
+    if (wifiToggleSwitch.checked) {
+      alert("Wifi is already turned on!");
+      return; }
+      else{
+      const offTime = new Date();
+      offTime.setHours(parseInt(wifiOffTime.split(":")[0]));
+      offTime.setMinutes(parseInt(wifiOffTime.split(":")[1]));
+      offTime.setSeconds(0);
+      
+      const now = new Date();
+      const remainingSeconds = (offTime.getTime() - now.getTime()) / 1000;
+      
+      setTimeout(function() {
+        wifiToggleSwitch.checked = false;
+        wifiSendButton.disabled = false;
+      }, remainingSeconds * 1000); }
+   
+      // Set timer for turning on wifi
+      const onTime = new Date();
+      onTime.setHours(parseInt(wifiOnTime));
+      onTime.setMinutes(0);
+      onTime.setSeconds(0);
+      
+      const now = new Date();
+      const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
+  
+      if(wifiSaveButton.checked = true){
+      setTimeout(function() {
+       wifiSendButton.disabled = false;
+      }, remainingSeconds * 1000);
+    
+    wifiSendButton.disabled = false;
+  }
+  doorSendButton.disabled = true; }
+  
+  doorSaveButton.onclick = function() {
+    const DoorOnTime = doorOnTime.value;
+    const DoorOffTime = doorOffTime.value;
+    
+    if (doorToggleSwitch.checked) {
+      alert("Lock is already on!");
+      return; }
+      else{
+      const offTime = new Date();
+      offTime.setHours(parseInt(DoorOffTime.split(":")[0]));
+      offTime.setMinutes(parseInt(DoorOffTime.split(":")[1]));
+      offTime.setSeconds(0);
+      
+      const now = new Date();
+      const remainingSeconds = (offTime.getTime() - now.getTime()) / 1000;
+      
+      setTimeout(function() {
+        doorToggleSwitch.checked = false;
+        doorSendButton.disabled = false;
+      }, remainingSeconds * 1000); }
+   
+      // Set timer for turning on wifi
+      const onTime = new Date();
+      onTime.setHours(parseInt(doorOnTime));
+      onTime.setMinutes(0);
+      onTime.setSeconds(0);
+      
+      const now = new Date();
+      const remainingSeconds = (onTime.getTime() - now.getTime()) / 1000;
+     
+     
+      if(isNaN(doorOnTime.value) ||isNaN(doorOnTime.value) ) {
+      setTimeout(function() {
+       
+        doorSendButton.disabled = false;
+      }, remainingSeconds * 1000); 
+      doorSendButton.disabled = false;}
+      else{
+        doorSaveButton.disabled = true;
+        doorSendButton.disabled = true;
+      }
+    
+  }
+  
+  
+  wifiSendButton.onclick = function() {
+    alert("Wifi will turn on at " + wifiOnTimeInput.value + " and turn off at " + wifiOffTimeInput.value );
+   wifiPopup.style.display = "none";
+   localStorage.setItem("be-wifiTime", wifiOnTimeInput.value + " - " + wifiOffTimeInput.value);
+  }
+  
+  doorSendButton.onclick = function() {
+     
+    alert("Door will be locked  at " + doorOnTime.value + " and be locked off at " + doorOffTime.value );
+    localStorage.setItem("be-doorTime", doorOnTime.value + " - " + doorOnTime.value);
+    doorPopup.style.display = "none";
+  }
+  
+  deleteBtnLight.addEventListener('click', function() {
     this.closest('.box').remove();
   });
-  wifiToggleSwitch.checked = localStorage.getItem("be-wifiCheck") == "true" ? true : false;
-wifiToggleSwitch.addEventListener('change', function() {
-  localStorage.setItem("be-wifiCheck", wifiToggleSwitch.checked);
-  wifiSet.disabled = wifiToggleSwitch.checked;
-});
-
-doorToggleSwitch.checked = localStorage.getItem("be-doorCheck") == "true" ? true : false;
-doorToggleSwitch.addEventListener('change', function() {
-  localStorage.setItem("be-doorCheck", doorToggleSwitch.checked);
-  doorSet.disabled = doorToggleSwitch.checked;
-});
-
-lightSet.disabled = true;
-lightSlider.checked = localStorage.getItem("be-lightCheck") == "true" ? true : false;
-lightSlider.addEventListener('change', function() {
-  localStorage.setItem("be-lightCheck",lightSlider.checked);
-  lightSet.disabled = !lightSlider.checked;
-});
-
-
-
-
-colorInput.addEventListener('change', function(e) {
-    localStorage.setItem("colorBedroom", e.target.value);
+  
+  deleteBtnWifi.addEventListener('click', function() {
+    this.closest('.box').remove();
   });
-
-
-
-
-
-
-
-
-saveButton.onclick = function() {
-  const minTemp = parseInt(document.getElementById("min").value);
-  const maxTemp = parseInt(document.getElementById("max").value);
-  if (isNaN(minTemp) || isNaN(maxTemp)) {
-    alert("Please enter valid numbers for both min and max temperature!");
-    return;
-  }
-  sendButton.disabled = false;
-};
-sendButton.onclick = function() {
-  let minTemp = document.getElementById("min").value;
-  let maxTemp = document.getElementById("max").value;
-  let userInput = parseInt(input.value);
-  if (userInput < minTemp || userInput > maxTemp) {
-    alert("Please enter a value between " + minTemp + " and " + maxTemp);
-    return;
-  }
-  sendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("temperature",userInput);
-};
-
-function openPopup() {
- 
-  event.preventDefault();
-  popup.style.display = "block";
-}
-
-function closePopup() {
-  event.preventDefault();
-  popup.style.display = "none";
-}
-window.onload = function() {
-  document.getElementById("popup").style.display = "none";
-}
-
-
-
-humiditySaveButton.onclick = function() {
-  let userInput = parseInt(humidityInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  humiditySendButton.disabled = false;
-};
-
-
-
-humiditySendButton.onclick = function() {
-  let userInput = parseInt(humidityInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  humiditySendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("be-humidity",userInput);
-};
-
-humiditySetButton.addEventListener("click", function() {
-  humidityPopup.style.display = "block";
-});
-
-
-closeHumidityPopupButton.addEventListener("click", function() {
-  humidityPopup.style.display = "none";
-});
-
-
-humidityInput.addEventListener("input", function() {
-  if (humidityInput.value !== "" || humidityInput.value < 0) {
-    humiditySendButton.disabled = false;
-  } 
-  humiditySendButton.disabled = true;
-});
-
-
-
-
-
-
-function openHumidityPopup() {
   
-  humidityPopup.style.display = "block";
-}
-
-co2SaveButton.onclick = function() {
-  let userInput = parseInt(co2Input.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
+  deleteDoor.addEventListener('click', function() {
+    this.closest('.box').remove();
+  });
+  
+  deleteSpeaker.addEventListener('click' , function() {
+    this.closest('.box').remove();
+  })
+  
+  
+  
+  wifiToggleSwitch.checked = localStorage.getItem("be-wifiCheck") == "true" ? true : false;
+  wifiToggleSwitch.addEventListener('change', function() {
+    localStorage.setItem("be-wifiCheck",wifiToggleSwitch.checked);
+    wifiSet.disabled = wifiToggleSwitch.checked;
+  });
+  doorToggleSwitch.checked = localStorage.getItem("be-doorCheck") == "true" ? true : false;
+  doorToggleSwitch.addEventListener('change', function() {
+    localStorage.setItem("be-doorCheck",doorToggleSwitch.checked);
+    doorSet.disabled = doorToggleSwitch.checked;
+  });
+  
+  
+  lightSlider.checked = localStorage.getItem("be-lightSet") == "true" ? true : false;
+  lightSlider.addEventListener('change', function() {
+    localStorage.setItem("be-lightSet",lightSlider.checked);
+    lightSet.disabled = !lightSlider.checked;
+  });
+  
+  
+  
+  
+  saveButton.onclick = function() {
+    let userInput = parseInt(input.value);
+    if (isNaN(userInput)) {
+      alert("Please enter valid temperature!");
+      sendButton.disabled = true;
+      return;
+    }
+    sendButton.disabled = false;
+  };
+  
+  sendButton.onclick = function() {
+    let userInput = parseInt(input.value);
+    if (userInput < 18 || userInput > 30) {
+      alert("Please enter a value between " + "18" + " and " + "30");
+  
+      return;
+    }
+    sendButton.disabled = true;
+    alert("User input: " + userInput);
+    localStorage.setItem("be-temperature",userInput);
+  };
+  
+  function openPopup() {
+   
+    event.preventDefault();
+    popup.style.display = "block";
   }
-  co2SendButton.disabled = false;
-};
-
-
-
-
- lightSave.onclick = function() {
-  let userInput = parseInt(lightInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for brigtness!");
-    return;
+  
+  function closePopup() {
+    event.preventDefault();
+    popup.style.display = "none";
   }
- lightSave.disabled = false;
- lightSend.disabled = false;
-};
-
-
-lightSend.onclick = function() {
-  let userInput = parseInt(lightInput.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
+  window.onload = function() {
+    document.getElementById("popup").style.display = "none";
   }
- lightSend.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("be-bright",userInput);
-};
-
-lightInput.addEventListener("input", function() {
-  if (lightInput.value !== "" ||lightInput.value < 0) {
-   lightSave.disabled = false; 
-  } else {
-    lightSave.disabled = true;
-  }
-});
-
-
-
-co2SendButton.onclick = function() {
-  let userInput = parseInt(co2Input.value);
-  if (isNaN(userInput)) {
-    alert("Please enter a valid number for humidity!");
-    return;
-  }
-  co2SendButton.disabled = true;
-  alert("User input: " + userInput);
-  localStorage.setItem("be-co2",userInput);
-};
-
-
-
-
-
-function closeco2Popup(){
-  event.preventDefault();
- co2Popup.style.display = "none";
-}
-
-closelight.addEventListener("click", function() {
- lightPopup.style.display = "none";
-});
-
-
-closeButton.addEventListener("click", closePopup);
-closeco2PopupButton.addEventListener("click" , closeco2Popup);
-
-co2SetButton.addEventListener("click", function() {
-  co2Popup.style.display = "block";
-});
-lightSet.addEventListener("click", function() {
-  lightPopup.style.display = "block";
-});
-
-
-
-co2Input.addEventListener("input", function() {
-  if (co2Input.value !== "" || co2Input.value < 0) {
-    co2SendButton.disabled = false;
-    co2SetButton.disabled = false;
-  } else {
-   co2SendButton.disabled = true;
-   co2SetButton.disabled = true;
-  }
-});
-
-
-function openCo2Popup(){
-  co2Popup.style.display = "block";
-}
-
-function openLightPopup(){
-  lightPopup.style.display = "block";
-}
-
-closeco2PopupButton.addEventListener("click", function() { co2Popup.style.display = "none"; });
-
-window.onclick = function(event) {
-  if (event.target == humidityPopup) {
+  
+  lightSave.onclick = function() {
+    let userInput = parseInt(lightInput.value);
+    if (isNaN(userInput)) {
+      alert("Please enter a valid number for brigtness!");
+      return;
+    }
+   lightSave.disabled = false;
+   
+  };
+  
+  
+  lightSend.onclick = function() {
+    let userInput = parseInt(lightInput.value);
+    if (isNaN(userInput)) {
+      alert("Please enter a valid number!");
+      return;
+    }
+    localStorage.setItem("k-bright",lightInput.value);
+   lightSend.disabled = true;
+    alert("User input: " + userInput);
+  };
+  
+  lightInput.addEventListener("input", function() {
+    if (lightInput.value !== "" ||lightInput.value < 0) {
+     lightSave.disabled = false; 
+    } else {
+      lightSave.disabled = true;
+    
+    }
+  });
+  lightSave.addEventListener("click" , function() {
+      
+    if (lightInput.value < 0 ||lightInput.value > 100) {
+      alert("Please enter number between 0 - 100 ");
+      lightSave.disabled = true;
+      return;
+    } else {
+     lightSend.disabled = false;
+  };});
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  humiditySetButton.addEventListener("click", function() {
+    humidityPopup.style.display = "block";
+  });
+  
+  
+  closeHumidityPopupButton.addEventListener("click", function() {
     humidityPopup.style.display = "none";
-  } else if (event.target == co2Popup) {
-    co2Popup.style.display = "none";
+  });
+  
+  
+  humidityInput.addEventListener("input", function() {
+    if (humidityInput.value !== "" || humidityInput.value < 0 ) {
+      humiditySendButton.disabled = false;
+    } 
+    humiditySendButton.disabled = true;
+  });
+  
+  
+  humiditySendButton.onclick = function() {
+    let userInput = parseInt(humidityInput.value);
+    if (isNaN(userInput) ) {
+      alert("Please enter a valid number for humidity!");
+      return;
+    }
+    humiditySendButton.disabled = false;
+    localStorage.setItem("be-humidity",humidityInput.value);
+    alert("User input: " + humidityInput.value);
+  };
+  humiditySaveButton.addEventListener("click" , function() {
+    if(humidityInput.value < 30 ||humidityInput.value > 70){
+      alert("Please enter a valid number for humidity!");
+      humiditySendButton.disabled = true;
+      
+    }
+    else{
+      humiditySendButton.disabled = false;
+    }
+  
+    });
+  
+  
+  co2SendButton.onclick = function() {
+    let userInput = parseInt(co2Input.value);
+    if (isNaN(userInput)) {
+      alert("Please enter a valid number for co2!");
+      return;
+    }
+    co2SendButton.disabled = false;
+    localStorage.setItem("be-co2",co2Input.value);
+    alert("User input: " + userInput);
+   
+  };
+  co2SaveButton.addEventListener("click" , function() {
+    let userInput = parseInt(co2Input.value);
+    if (userInput < 0 ||userInput > 10) {
+      alert("Please enter a valid number for humidity!");
+      co2SendButton.disabled = true;
+    } else {
+    co2SendButton.disabled = false;
+  };});
+  
+  
+  co2Input.addEventListener("input", function() {
+    if (co2Input.value !== "" || co2Input.value < 0) {
+      co2SendButton.disabled = false;
+    
+    } else {
+     co2SendButton.disabled = true;
+    
+    }
+  });
+    
+     function openHumidityPopup() {
+    
+    humidityPopup.style.display = "block";
   }
-  else if (event.target == lightPopup) {
-  lightPopup.style.display = "none"; }
   
   
-}
-
+  
+  function closeco2Popup(){
+    event.preventDefault();
+   co2Popup.style.display = "none";
+  }
+  
+  closelight.addEventListener("click", function() {
+   lightPopup.style.display = "none";
+  });
+  
+  
+  closeButton.addEventListener("click", closePopup);
+  closeco2PopupButton.addEventListener("click" , closeco2Popup);
+  
+  co2SetButton.addEventListener("click", function() {
+    co2Popup.style.display = "block";
+  });
+  lightSet.addEventListener("click", function() {
+    lightPopup.style.display = "block";
+  });
+  
+  
+  
+  
+  function openCo2Popup(){
+    co2Popup.style.display = "block";
+  }
+  
+  function openLightPopup(){
+    lightPopup.style.display = "block";
+  }
+  
+  closeco2PopupButton.addEventListener("click", function() { co2Popup.style.display = "none"; });
+  
+  window.onclick = function(event) {
+    if (event.target == humidityPopup) {
+      humidityPopup.style.display = "none";
+    } else if (event.target == co2Popup) {
+      co2Popup.style.display = "none";
+    }
+    else if (event.target == lightPopup) {
+    lightPopup.style.display = "none"; }
+  
+    
+  }
+  
+  
+  
+  lightInput.addEventListener("input", function() {
+    if (lightInput.value !== "" ||lightInput.value < 0) {
+     lightSave.disabled = false; 
+    } else {
+      lightSave.disabled = true;
+    }
+  });
+  
+  
